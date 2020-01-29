@@ -42,9 +42,9 @@ const GlobalStyle = createGlobalStyle`
     color: ${colours.primary};
     display: flex;
     grid-area: footer;
-    justify-content: space-between;
-    line-height: 1;
-    margin-top: auto;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 0.8rem;
   }
 
   h1, h2, h3, h4, h5, h6 {

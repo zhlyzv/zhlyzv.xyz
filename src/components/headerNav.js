@@ -19,8 +19,7 @@ const Nav = styled.nav`
             text-align: center;
             vertical-align: middle;
             color: ${colours.dark};
-            padding: 10px 5px !important;
-            margin: 5px 0;
+            margin: 10px 0;
             position: relative;
             text-decoration: underline double;
 
@@ -35,6 +34,8 @@ const Nav = styled.nav`
             position: relative;
             writing-mode: horizontal-tb;
             text-orientation: upright;
+            justify-self: evenly;
+            padding: 20px 10px;
         }
     }
     a {

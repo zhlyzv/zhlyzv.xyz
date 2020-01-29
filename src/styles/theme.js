@@ -4,8 +4,9 @@ export const colours = {
     lightest: '#fbf8ff',
     dark: '#0b0512',
     accent: '#6632aa',
+    background: 'rgba(0,0,0,0.03)',
 };
-//  TODO: possible background variation rgba(0,0,0,0.03) ?
+
 export const font = {
     size: 18,
     body: 'Helvetica Neue, Helvetica, Arial, sans-serif',
