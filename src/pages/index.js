@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-
 import PropTypes from 'prop-types';
+
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Intro from '../components/intro';
@@ -11,7 +11,7 @@ import Contact from '../components/contact';
 import HomepageSection from '../components/homepageSection';
 
 const Home = ({ data }) => {
-    const { intro, title, work, contact } = data.homeJson;
+    const { intro, title, work, contact, projects } = data.homeJson;
 
     return (
         <Layout>
@@ -22,11 +22,15 @@ const Home = ({ data }) => {
             <HomepageSection sectionName={work.heading} titleAlign='left'>
                 <Work items={work.items} />
             </HomepageSection>
-            <HomepageSection sectionName='projects.' titleAlign='right'>
-                <Projects />
+            <HomepageSection sectionName={projects.heading} titleAlign='right'>
+                <Projects
+                    text={projects.text}
+                    ctas={[projects.cta_1, projects.cta_2]}
+                    links={[projects.link_1, projects.link_2]}
+                />
             </HomepageSection>
             <HomepageSection sectionName={contact.heading} titleAlign='left'>
-                <Contact />
+                <Contact text={contact.text} email={contact.email} cta={contact.email_cta} />
             </HomepageSection>
         </Layout>
     );
@@ -54,6 +58,17 @@ export const query = graphql`
             }
             contact {
                 heading
+                text
+                email
+                email_cta
+            }
+            projects {
+                heading
+                text
+                cta_1
+                cta_2
+                link_1
+                link_2
             }
         }
     }

@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import formattedString from 'react-formatted-string';
 
-const Contact = () => (
-    <Wrapper>
-        <p>
-            You can drop me a line{` `}
-            <a href='mailto:hello@zhlyzv.xyz?subject=Portfolio contact'>here</a>
-        </p>
-    </Wrapper>
-);
+const Contact = ({ text, email, cta }) => {
+    const contactString = formattedString(text, <a href={`mailto:${email}`}>{cta}</a>);
+    return (
+        <Wrapper>
+            <p>{contactString}</p>
+        </Wrapper>
+    );
+};
 
 const Wrapper = styled.div`
     display: flex;
@@ -16,9 +18,12 @@ const Wrapper = styled.div`
     place-items: center center;
     justify-content: center;
     text-align: center;
-    p {
-        letter-spacing: 0.06rem;
-    }
 `;
+
+Contact.propTypes = {
+    text: PropTypes.string,
+    email: PropTypes.string,
+    cta: PropTypes.string,
+};
 
 export default Contact;

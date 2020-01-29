@@ -12,7 +12,6 @@ const Nav = styled.nav`
         z-index: 999;
         right: 10px;
         top: 10px;
-        /* transform: rotate(180deg); */
         a {
             transition: all 0.2s linear;
             display: inline;
@@ -29,6 +28,11 @@ const Nav = styled.nav`
                 color: ${colours.accent};
                 text-decoration: underline overline;
             }
+        }
+        @media (max-width: 768px) {
+            position: relative;
+            writing-mode: horizontal-tb;
+            text-orientation: upright;
         }
     }
     a {

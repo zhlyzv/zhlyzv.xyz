@@ -18,16 +18,6 @@ const Wrapper = styled.div`
     place-items: center center;
     justify-content: center;
     text-align: center;
-    p {
-        max-width: 50%;
-        letter-spacing: 0.06rem;
-    }
-    @media (max-width: 768px) {
-        p {
-            max-width: 80%;
-        }
-        margin-bottom: 20px;
-    }
 `;
 
 const Title = styled.h1`
@@ -42,8 +32,11 @@ const Title = styled.h1`
         text-transform: uppercase;
     }
     @media (max-width: 768px) {
-        font-size: 1.5rem;
-        max-width: 85%;
+        font-size: 1.35rem;
+        max-width: 75%;
+        span {
+            font-size: 0.85rem;
+        }
     }
 `;
 

@@ -35,9 +35,18 @@
       }
     ]
   },
+  "projects": {
+    "heading": "projects.",
+    "text": "The {0} and any other projects can be found on {1}",
+    "cta_1": "source code for this website",
+    "link_1": "https://github.com/zhlyzv/zhlyzv.xyz",
+    "cta_2": "my GitHub profile.",
+    "link_2": "https://github.com/zhlyzv"
+  },
   "contact": {
     "heading": "contact.",
-    "text": "foobar",
-    "email": "hello@zhlyzv.xyz"
+    "text": "Always happy to have a chat about a project, have a coffee or go out for beers. You can contact me {0}",
+    "email": "hello@zhlyzv.xyz",
+    "email_cta": "here."
   }
 }

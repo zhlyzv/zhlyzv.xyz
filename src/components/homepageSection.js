@@ -22,8 +22,10 @@ const SectionHeading = styled.h2`
     flex: 1 100%;
     z-index: 1;
     @media (max-width: 768px) {
-        font-size: 1.1rem;
-        top: 0;
+        font-size: 0.92rem;
+        top: 15%;
+        left: ${props => (props.titleAlign === 'left' ? '-5%' : 'auto')};
+        right: ${props => (props.titleAlign === 'left' ? 'auto' : '-5%')};
     }
 `;
 
@@ -40,8 +42,16 @@ const SectionWrapper = styled.section`
     justify-content: center;
     margin-bottom: 30px;
     min-height: 30vh;
+    p {
+        max-width: 50%;
+        letter-spacing: 0.06rem;
+    }
     @media (max-width: 768px) {
-        padding: 10px;
+        padding: 10px 0;
+        p {
+            font-size: 0.9rem;
+            max-width: 70%;
+        }
     }
 `;
 

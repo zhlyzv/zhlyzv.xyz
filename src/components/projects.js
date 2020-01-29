@@ -1,15 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
+import formattedString from 'react-formatted-string';
 
-const Projects = () => (
-    <Wrapper>
-        <p>
-            The <a href='https://github.com/zhlyzv'>source code for this website</a> and any other
-            projects I am working on can be found on{' '}
-            <a href='https://github.com/zhlyzv'>my GitHub profile</a>.
-        </p>
-    </Wrapper>
-);
+const Projects = ({ text, ctas, links }) => {
+    const projectText = formattedString(
+        text,
+        <a href={links[0]}>{ctas[0]}</a>,
+        <a href={links[1]}>{ctas[1]}</a>
+    );
+    return (
+        <Wrapper>
+            <p>{projectText}</p>
+        </Wrapper>
+    );
+};
 
 const Wrapper = styled.div`
     display: flex;
@@ -17,16 +22,12 @@ const Wrapper = styled.div`
     place-items: center center;
     justify-content: center;
     text-align: center;
-    p {
-        max-width: 60%;
-        letter-spacing: 0.06rem;
-    }
-    @media (max-width: 768px) {
-        p {
-            max-width: 80%;
-        }
-        margin-bottom: 20px;
-    }
 `;
+
+Projects.propTypes = {
+    text: propTypes.string,
+    ctas: propTypes.array,
+    links: propTypes.string,
+};
 
 export default Projects;
