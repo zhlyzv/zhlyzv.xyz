@@ -3,6 +3,7 @@ module.exports = {
         title: `zhlyzv`,
         description: `Alexander Zhelyazov is a full-stack developer based in London.`,
         author: `@zhlyzv`,
+        siteUrl: `https://zhlyzv.xyz/`,
     },
     plugins: [
         `gatsby-plugin-styled-components`,
@@ -45,5 +46,6 @@ module.exports = {
                 icon: `src/images/gatsby-icon.png`,
             },
         },
+        `gatsby-plugin-sitemap`,
     ],
 };

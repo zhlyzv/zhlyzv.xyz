@@ -81,12 +81,13 @@ const GlobalStyle = createGlobalStyle`
 
   p {
     margin: 0 0 ${spacing.medium};
+    line-height: 1.8;
   }
 
   a {
     color: ${colours.accent};
     display: inline-block;
-    border-bottom: 2px solid;
+    border-bottom: 1px solid;
     transition: all .2s ease;
     text-decoration: none;
     &:hover,

@@ -24,8 +24,10 @@ const Nav = styled.nav`
             position: relative;
             text-decoration: underline double;
 
-            :hover {
-                color: ${colours.accent};
+            :hover,
+            :active,
+            :focus {
+                color: ${colours.light};
                 text-decoration: underline overline;
             }
         }
