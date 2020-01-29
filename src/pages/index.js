@@ -1,21 +1,68 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import { graphql } from 'gatsby';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import PropTypes from 'prop-types';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import Intro from '../components/intro';
+import Work from '../components/work';
+import Projects from '../components/projects';
+import Contact from '../components/contact';
+import HomepageSection from '../components/homepageSection';
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const Home = ({ data }) => {
+    const { intro, title, work, contact } = data.homeJson;
 
-export default IndexPage
+    return (
+        <Layout>
+            <SEO title={title} keywords={[`gatsby`, `react`, 'portfolio']} />
+            <HomepageSection sectionName={intro.heading} titleAlign='right'>
+                <Intro title={intro.title} name={intro.name} summary={intro.summary} />
+            </HomepageSection>
+            <HomepageSection sectionName={work.heading} titleAlign='left'>
+                <Work items={work.items} />
+            </HomepageSection>
+            <HomepageSection sectionName='projects.' titleAlign='right'>
+                <Projects />
+            </HomepageSection>
+            <HomepageSection sectionName={contact.heading} titleAlign='left'>
+                <Contact />
+            </HomepageSection>
+        </Layout>
+    );
+};
+
+export const query = graphql`
+    query {
+        homeJson {
+            title
+            intro {
+                heading
+                title
+                summary
+                name
+            }
+            work {
+                heading
+                items {
+                    title
+                    link
+                    logo {
+                        publicURL
+                    }
+                }
+            }
+            contact {
+                heading
+            }
+        }
+    }
+`;
+
+Home.propTypes = {
+    data: PropTypes.shape({
+        homeJson: PropTypes.object.isRequired,
+    }),
+};
+
+export default Home;

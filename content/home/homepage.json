@@ -1,0 +1,43 @@
+{
+  "title": "Home",
+  "intro": {
+    "name": "Alexander Zhelyazov",
+    "title": "Full-Stack Developer",
+    "summary": "Experienced full-stack developer with a history of working in the e-commerce sector. \n Passionate about delivering standards-compliant, maintainable solutions with a focus on user experience.",
+    "heading": "about."
+  },
+  "work": {
+    "heading": "work.",
+    "items": [
+      {
+        "title": "Jimmy Choo",
+        "link": "https://www.jimmychoo.com/en/home",
+        "logo": "./images/logo-jch.svg",
+        "image": "./images/ss-jch.png"
+      },
+      {
+        "title": "Belstaff",
+        "link": "https://www.belstaff.co.uk/home",
+        "logo": "./images/logo-bff.svg",
+        "image": "./images/ss-bff.png"
+      },
+      {
+        "title": "Bally",
+        "link": "https://www.bally.co.uk/en_gb/home/",
+        "logo": "./images/logo-bly.svg",
+        "image": "./images/ss-bly.png"
+      },
+      {
+        "title": "Versace",
+        "link": "https://www.versace.com/gb/en-gb/home/",
+        "logo": "./images/logo-ver.svg",
+        "image": "./images/ss-ver.png"
+      }
+    ]
+  },
+  "contact": {
+    "heading": "contact.",
+    "text": "foobar",
+    "email": "hello@zhlyzv.xyz"
+  }
+}
