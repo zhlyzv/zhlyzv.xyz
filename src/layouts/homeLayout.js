@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import GlobalStyle from '../styles/global';
 import useMetadata from '../hooks/useMetadata';
 
-import Header from './header';
-import Footer from './footer';
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 const Wrapper = styled.div`
     display: grid;

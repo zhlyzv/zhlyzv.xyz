@@ -11,13 +11,6 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                name: `images`,
-                path: `${__dirname}/src/images`,
-            },
-        },
-        {
-            resolve: `gatsby-source-filesystem`,
-            options: {
                 name: `content`,
                 path: `${__dirname}/content`,
             },
@@ -32,7 +25,7 @@ module.exports = {
                 defaultQuality: 100,
             },
         },
-        `gatsby-transformer-remark`,
+        // Used for managing homepage content via JSON
         `gatsby-transformer-json`,
         {
             resolve: `gatsby-plugin-manifest`,
@@ -47,5 +40,18 @@ module.exports = {
             },
         },
         `gatsby-plugin-sitemap`,
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `${__dirname}/content/blog`,
+                name: `blog`,
+            },
+        },
+        {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+                plugins: [`gatsby-remark-images`],
+            },
+        },
     ],
 };
