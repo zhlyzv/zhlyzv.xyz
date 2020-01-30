@@ -5,6 +5,7 @@ featured: false
 image: ../travel/images/japan/tokyo03.jpg
 category:
   - Travel
+  - Japan
 tags:
   - Japan
   - Tokyo

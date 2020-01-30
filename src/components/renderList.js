@@ -1,28 +1,36 @@
 import React from 'react';
-// import kebabCase from 'lodash.kebabcase';
 import { Link as GatsbyLink } from 'gatsby';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
+import { buildSlug } from '../util';
 import { colours } from '../styles/theme';
 
 const renderList = ({ node }) => {
     const imageSource = node.frontmatter.image.childImageSharp.fluid.src;
+    const { slug } = node.fields;
+    const { title, category: categories } = node.frontmatter;
 
     return (
-        <article key={node.fields.slug} style={{ marginBottom: '50px' }}>
+        <article key={slug} style={{ marginBottom: '50px' }}>
             <Heading>
-                <Title>{node.frontmatter.title}</Title>
+                <Title>{title}</Title>
                 <Info>
-                    {/* <span>{country}</span> */}
-                    {node.frontmatter.category.map((cat, i, arr) => (
-                        // <Link to={`/blog/category/${kebabCase(cat)}`}>{cat}</Link>
-                        <span key={i}>{cat}</span>
-                    ))}
+                    <Category>
+                        {categories.map((cat, i, arr) => (
+                            <>
+                                <Link key={i} to={buildSlug('blog', 'category', cat)}>
+                                    {cat}
+                                </Link>
+                                {arr.length > i && arr.length - 1 !== i && <Separator>|</Separator>}
+                            </>
+                        ))}
+                    </Category>
                     <span>{node.frontmatter.date}</span>
                 </Info>
             </Heading>
 
-            <Link to={node.fields.slug}>
-                <Image src={imageSource} alt={node.frontmatter.title} />
+            <Link to={slug}>
+                <Image src={imageSource} alt={title} />
             </Link>
         </article>
     );
@@ -62,19 +70,30 @@ const Title = styled.span`
     display: inline-block;
 `;
 
+const Separator = styled.span`
+    display: inline-block;
+    padding: 0 5px !important;
+`;
+
+const Category = styled.span`
+    display: inline;
+`;
+
 const Info = styled.div`
+    color: ${colours.grey};
     font-size: 0.8rem;
     display: flex;
     flex-flow: column;
     text-align: right;
     span {
         padding: 5px 0;
-        display: inline-block;
         &:first-of-type {
             border-bottom: 1px solid rgba(245, 245, 245, 0.7);
             padding-bottom: 7px;
         }
     }
+    // Otherwise category links are unclickable under the corner title decoration
+    z-index: 1;
 `;
 
 const Image = styled.img`
@@ -89,5 +108,9 @@ const Link = styled(GatsbyLink)`
     text-decoration: none;
     border: 0;
 `;
+
+renderList.propTypes = {
+    node: Object.isRequired,
+};
 
 export default renderList;
