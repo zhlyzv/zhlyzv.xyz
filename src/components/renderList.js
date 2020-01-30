@@ -11,7 +11,7 @@ const renderList = ({ node }) => {
     const { title, category: categories } = node.frontmatter;
 
     return (
-        <article key={slug} style={{ marginBottom: '50px' }}>
+        <article key={slug} style={{ marginBottom: '50px', alignSelf: 'center' }}>
             <Heading>
                 <Title>{title}</Title>
                 <Info>
@@ -99,7 +99,7 @@ const Info = styled.div`
 const Image = styled.img`
     transition: all 400ms ease-in-out;
     cursor: pointer;
-    border: 5px solid ${colours.lightest};
+    /* border: 2px solid ${colours.lightest}; */
     border-radius: 3px;
     display: block;
 `;
@@ -110,7 +110,7 @@ const Link = styled(GatsbyLink)`
 `;
 
 renderList.propTypes = {
-    node: Object.isRequired,
+    node: propTypes.object.isRequired,
 };
 
 export default renderList;

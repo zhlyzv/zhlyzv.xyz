@@ -1,16 +1,17 @@
 import React from 'react';
-import kebabCase from 'lodash.kebabcase';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby';
+import styled from 'styled-components';
+import { buildSlug } from '../util';
 
 const BlogFeatured = () => {
     const { markdownRemark } = useStaticQuery(query);
     const imageSource = markdownRemark.frontmatter.image.childImageSharp.fluid.src;
 
     return (
-        <>
+        <Wrapper>
             <div>
                 <Link to={markdownRemark.fields.slug}>
-                    <img src={imageSource} alt={markdownRemark.frontmatter.title} />
+                    <Image src={imageSource} alt={markdownRemark.frontmatter.title} />
                 </Link>
             </div>
 
@@ -24,14 +25,35 @@ const BlogFeatured = () => {
                 </div>
 
                 {markdownRemark.frontmatter.category.map((cat, index, arr) => (
-                    <Link to={`/blog/category/${kebabCase(cat)}`}>{cat}</Link>
+                    <Link to={buildSlug('blog', 'category', cat)}>{cat}</Link>
                 ))}
             </div>
-        </>
+        </Wrapper>
     );
 };
 
 export default BlogFeatured;
+
+const Image = styled.img`
+    transition: all 400ms ease-in-out;
+    cursor: pointer;
+    border-radius: 3px;
+    display: block;
+`;
+
+const Link = styled(GatsbyLink)`
+    text-decoration: none;
+    border: 0;
+`;
+
+const Wrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`;
 
 const query = graphql`
     query BlogFeatured {

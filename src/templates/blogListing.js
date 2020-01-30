@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../layouts/blogLayout';
-import Seo from '../components/seo';
 import Pagination from '../components/pagination';
 import Featured from '../components/featured';
 import renderList from '../components/renderList';
@@ -10,17 +9,13 @@ import renderList from '../components/renderList';
 const BlogPostList = ({ data, pageContext }) => {
     const { allMarkdownRemark } = data;
     const { currentPage, numPages } = pageContext;
+    const posts = allMarkdownRemark.edges.map(renderList);
 
     return (
         <Layout>
-            <Seo title='Blog' />
-            <div>{currentPage === 1 && <Featured />}</div>
-
-            <div>
-                <div>{allMarkdownRemark.edges.map(renderList)}</div>
-
-                <Pagination currentPage={currentPage} numPages={numPages} />
-            </div>
+            {currentPage === 1 && <Featured />}
+            {posts}
+            <Pagination currentPage={currentPage} numPages={numPages} />
         </Layout>
     );
 };

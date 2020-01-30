@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import GlobalStyle from '../styles/global';
 import useMetadata from '../hooks/useMetadata';
+import SEO from '../components/seo';
 
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -17,13 +18,19 @@ const Wrapper = styled.div`
     justify-content: center;
 `;
 
+const Content = styled.main`
+    display: flex;
+    flex-direction: column;
+`;
+
 const Layout = ({ children }) => {
     const { title } = useMetadata();
     return (
         <Wrapper>
             <GlobalStyle />
+            <SEO title='Blog' />
             <Header siteTitle={title} />
-            <main>{children}</main>
+            <Content>{children}</Content>
             <Footer />
         </Wrapper>
     );
