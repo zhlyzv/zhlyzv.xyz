@@ -1,6 +1,6 @@
 ---
-title: My second blog post
-date: 2017-11-27
+title: Kyoto 9
+date: 2017-12-01
 featured: false
 image: ../travel/images/japan/tokyo01.jpg
 category:

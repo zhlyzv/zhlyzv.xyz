@@ -1,6 +1,6 @@
 ---
-title: My first blog post
-date: 2017-11-26
+title: Tokyo 3
+date: 2017-12-05
 featured: false
 image: ../travel/images/japan/tokyo02.jpg
 category:

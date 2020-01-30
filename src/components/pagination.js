@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const Pagination = ({ numPages, currentPage, contextPage }) => {
     if (numPages <= 1) {
@@ -6,7 +7,7 @@ const Pagination = ({ numPages, currentPage, contextPage }) => {
     }
 
     return (
-        <div>
+        <List>
             {Array.from({ length: numPages }).map((item, i) => {
                 const index = i + 1;
 
@@ -14,13 +15,34 @@ const Pagination = ({ numPages, currentPage, contextPage }) => {
                 const link = index === 1 ? baseLink : `${baseLink}page/${index}`;
 
                 return (
-                    <div current={currentPage === index} key={link}>
+                    <Page current={currentPage === index} key={link}>
                         {currentPage === index ? <span>{index}</span> : <a href={link}>{index}</a>}
-                    </div>
+                    </Page>
                 );
             })}
-        </div>
+        </List>
     );
 };
+
+const List = styled.ul`
+    display: flex;
+    justify-content: center;
+    list-style: outside none none;
+    border-top: 1px solid rgb(238, 238, 238);
+    max-width: 40%;
+    margin: 0 auto;
+`;
+
+const Page = styled.li`
+    min-width: 50px;
+    margin: -1px 0.5em 0px;
+    padding: 1em 0px;
+    text-align: center;
+    border-top: 1px solid ${props => (props.current ? 'black' : 'transparent')};
+    a {
+        text-decoration: none;
+        border-bottom: 0;
+    }
+`;
 
 export default Pagination;

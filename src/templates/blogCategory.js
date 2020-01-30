@@ -4,6 +4,8 @@ import { graphql, Link } from 'gatsby';
 
 const BlogCategory = ({ data, pageContext }) => {
     const { allMarkdownRemark } = data;
+    console.log('blog category data');
+    console.log(data);
 
     return (
         <>
@@ -74,7 +76,7 @@ export const query = graphql`
                     }
                     frontmatter {
                         title
-                        date
+                        date(formatString: "MMMM YYYY")
                         category
                         image {
                             childImageSharp {

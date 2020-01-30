@@ -17,7 +17,7 @@ const BlogFeatured = () => {
             <div>
                 <div>
                     <Link to={markdownRemark.fields.slug}>
-                        <h2>{markdownRemark.frontmatter.title}</h2>
+                        <h2>FEATURED {markdownRemark.frontmatter.title}</h2>
                     </Link>
 
                     <div>{markdownRemark.frontmatter.date}</div>

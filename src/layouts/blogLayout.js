@@ -1,21 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
+import styled from 'styled-components';
+import GlobalStyle from '../styles/global';
+import useMetadata from '../hooks/useMetadata';
 
-const Layout = ({ children }) => (
-    <StaticQuery
-        query={graphql`
-            query SiteTitleQuery {
-                site {
-                    siteMetadata {
-                        title
-                    }
-                }
-            }
-        `}
-        render={data => <main>{children}</main>}
-    />
-);
+import Header from '../components/header';
+import Footer from '../components/footer';
+
+const Wrapper = styled.div`
+    display: grid;
+    grid-template-areas: 'header' 'content' 'footer';
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    max-width: 1360px;
+    margin: 0 auto;
+    justify-content: center;
+`;
+
+const Layout = ({ children }) => {
+    const { title } = useMetadata();
+    return (
+        <Wrapper>
+            <GlobalStyle />
+            <Header siteTitle={title} />
+            <main>{children}</main>
+            <Footer />
+        </Wrapper>
+    );
+};
 
 Layout.propTypes = {
     children: PropTypes.node.isRequired,
