@@ -3,30 +3,6 @@ const path = require('path');
 
 const kebabCase = require(`lodash.kebabcase`);
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-    const { createNodeField } = actions;
-
-    if (node.internal.type === 'MarkdownRemark') {
-        const value = createFilePath({ node, getNode });
-        const [month, day, year] = new Date(node.frontmatter.date)
-            .toLocaleDateString('en-EN', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-            })
-            .split('/');
-
-        const slug = value.replace('/blog/', '').replace(/\/$/, '');
-        const url = `/blog/${year}/${month}/${day}/${slug}`;
-
-        createNodeField({
-            name: 'slug',
-            node,
-            value: url,
-        });
-    }
-};
-
 // 1. This is called once the data layer is bootstrapped to let plugins create pages from data.
 exports.createPages = ({ graphql, actions }) => {
     // 1.1 Getting the method to create pages
@@ -71,15 +47,21 @@ exports.createPages = ({ graphql, actions }) => {
         const numPages = Math.ceil(postsWithoutFeatured.length / postsPerPage);
         const categories = [];
         // 3 Loop throught all posts
-        posts.forEach((post, index) => {
+        posts.forEach((post, index, arr) => {
             // push categories into the array above
             post.node.frontmatter.category.forEach(cat => categories.push(cat));
             // 3.1 Finally create posts
+            // find what the next and previous posts are
+            const prev = arr[index - 1];
+            const next = arr[index + 1];
+
             createPage({
                 path: post.node.fields.slug,
                 component: blogPost,
                 context: {
                     slug: post.node.fields.slug,
+                    prev,
+                    next,
                 },
             });
         });
@@ -124,4 +106,27 @@ exports.createPages = ({ graphql, actions }) => {
             });
         });
     });
+};
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
+    const { createNodeField } = actions;
+
+    if (node.internal.type === 'MarkdownRemark') {
+        const value = createFilePath({ node, getNode });
+        const [month, year] = new Date(node.frontmatter.date)
+            .toLocaleDateString('en-EN', {
+                year: 'numeric',
+                month: 'long',
+            })
+            .split('/');
+
+        const slug = value.replace('/blog/', '').replace(/\/$/, '');
+        const url = `/blog/${month}/${year}/${slug}`;
+
+        createNodeField({
+            name: 'slug',
+            node,
+            value: url,
+        });
+    }
 };
