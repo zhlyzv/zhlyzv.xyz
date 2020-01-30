@@ -47,8 +47,7 @@ exports.createPages = ({ graphql, actions }) => {
                         }
                         frontmatter {
                             title
-                            date
-                            author
+                            date(formatString: "MMMM YYYY")
                             category
                             tags
                             featured
@@ -67,7 +66,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         // 2.2 Our posts are here
         const posts = result.data.allMarkdownRemark.edges;
-        const postsPerPage = 9;
+        const postsPerPage = 6;
         const postsWithoutFeatured = posts.filter(({ node }) => !node.frontmatter.featured);
         const numPages = Math.ceil(postsWithoutFeatured.length / postsPerPage);
         const categories = [];

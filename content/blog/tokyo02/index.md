@@ -1,9 +1,8 @@
 ---
 title: My first blog post
-date: 2017-11-24
-author: Alexander Zhelyazov
-featured: true
-image: ../travel/images/japan/tokyo00.jpg
+date: 2017-11-26
+featured: false
+image: ../travel/images/japan/tokyo02.jpg
 category:
   - Travel
 tags:

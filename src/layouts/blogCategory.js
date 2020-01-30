@@ -23,7 +23,6 @@ const BlogCategory = ({ data, pageContext }) => {
                             <h1>{node.frontmatter.title}</h1>
                         </Link>
                         <p>{node.frontmatter.date}</p>
-                        <p>By {node.frontmatter.author}</p>
                         <p>
                             In:{' '}
                             {node.frontmatter.category.map(cat => (
@@ -76,7 +75,6 @@ export const query = graphql`
                     frontmatter {
                         title
                         date
-                        author
                         category
                         image {
                             childImageSharp {
