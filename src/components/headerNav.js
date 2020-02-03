@@ -36,6 +36,12 @@ const Nav = styled.nav`
             text-orientation: upright;
             justify-self: evenly;
             padding: 20px 10px;
+            right: auto;
+            top: auto;
+            a {
+                text-decoration: underline;
+                padding: 0;
+            }
         }
     }
     a {

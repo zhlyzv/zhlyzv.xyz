@@ -4,23 +4,24 @@ import styled from 'styled-components';
 import propTypes from 'prop-types';
 import { buildSlug } from '../util';
 import { colours } from '../styles/theme';
+import Img from "gatsby-image"
 
 const renderList = ({ node }) => {
-    const imageSource = node.frontmatter.image.childImageSharp.fluid.src;
+    const imageSource = node.frontmatter.image.childImageSharp.fluid;
     const { slug } = node.fields;
     const { title, category: categories } = node.frontmatter;
 
     return (
-        <article key={slug} style={{ marginBottom: '50px', alignSelf: 'center' }}>
+        <Post key={slug}>
             <Heading>
                 <Title>{title}</Title>
                 <Info>
                     <Category>
                         {categories.map((cat, i, arr) => (
                             <>
-                                <Link key={i} to={buildSlug('blog', 'category', cat)}>
+                                <CategoryLink key={i} to={buildSlug('blog', 'category', cat)}>
                                     {cat}
-                                </Link>
+                                </CategoryLink>
                                 {arr.length > i && arr.length - 1 !== i && <Separator>|</Separator>}
                             </>
                         ))}
@@ -30,9 +31,9 @@ const renderList = ({ node }) => {
             </Heading>
 
             <Link to={slug}>
-                <Image src={imageSource} alt={title} />
+                <Image fluid={imageSource} alt={title} />
             </Link>
-        </article>
+        </Post>
     );
 };
 
@@ -96,18 +97,35 @@ const Info = styled.div`
     z-index: 1;
 `;
 
-const Image = styled.img`
+const Image = styled(Img)`
     transition: all 400ms ease-in-out;
     cursor: pointer;
     /* border: 2px solid ${colours.lightest}; */
     border-radius: 3px;
     display: block;
+    width: 100%;
 `;
 
 const Link = styled(GatsbyLink)`
     text-decoration: none;
     border: 0;
+    display: block;
 `;
+
+const CategoryLink = styled(GatsbyLink)`
+    text-decoration: none;
+    border: 0;
+    display: inline-block;
+`;
+
+const Post = styled.article`
+    margin-bottom: 50px;
+    align-self: center;
+    width: 100%;
+    @media (max-width: 768px) {
+        margin-bottom: 20px;
+    }
+`
 
 renderList.propTypes = {
     node: propTypes.object.isRequired,

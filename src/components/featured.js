@@ -39,6 +39,7 @@ const Image = styled.img`
     cursor: pointer;
     border-radius: 3px;
     display: block;
+    width: 100%;
 `;
 
 const Link = styled(GatsbyLink)`
@@ -46,13 +47,13 @@ const Link = styled(GatsbyLink)`
     border: 0;
 `;
 
-const Wrapper = styled.div`
-    width: 100%;
+const Wrapper = styled.article`
+    /* width: 100%;
     display: flex;
     flex-flow: wrap;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 `;
 
 const query = graphql`

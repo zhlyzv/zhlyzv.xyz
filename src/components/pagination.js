@@ -29,8 +29,10 @@ const List = styled.ul`
     justify-content: center;
     list-style: outside none none;
     border-top: 1px solid rgb(238, 238, 238);
-    max-width: 40%;
-    margin: 0 auto;
+    width: 60%;
+    @media (max-width: 768px) {
+        width: 80%;
+    }
 `;
 
 const Page = styled.li`

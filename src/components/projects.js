@@ -27,7 +27,7 @@ const Wrapper = styled.div`
 Projects.propTypes = {
     text: propTypes.string,
     ctas: propTypes.array,
-    links: propTypes.string,
+    links: propTypes.array,
 };
 
 export default Projects;
