@@ -2,18 +2,17 @@ import React from 'react';
 import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby';
 import styled from 'styled-components';
 import { buildSlug } from '../util';
+import Img from 'gatsby-image';
 
 const BlogFeatured = () => {
     const { markdownRemark } = useStaticQuery(query);
-    const imageSource = markdownRemark.frontmatter.image.childImageSharp.fluid.src;
+    const imageSource = markdownRemark.frontmatter.image.childImageSharp.fluid;
 
     return (
         <Wrapper>
-            <div>
-                <Link to={markdownRemark.fields.slug}>
-                    <Image src={imageSource} alt={markdownRemark.frontmatter.title} />
-                </Link>
-            </div>
+            <Link to={markdownRemark.fields.slug}>
+                <Image fluid={imageSource} alt={markdownRemark.frontmatter.title} />
+            </Link>
 
             <div>
                 <div>
@@ -34,9 +33,10 @@ const BlogFeatured = () => {
 
 export default BlogFeatured;
 
-const Image = styled.img`
+const Image = styled(Img)`
     transition: all 400ms ease-in-out;
     cursor: pointer;
+    /* border: 2px solid ${colours.lightest}; */
     border-radius: 3px;
     display: block;
     width: 100%;
@@ -45,15 +45,18 @@ const Image = styled.img`
 const Link = styled(GatsbyLink)`
     text-decoration: none;
     border: 0;
+    display: block;
 `;
 
 const Wrapper = styled.article`
-    /* width: 100%;
+    margin-bottom: 50px;
+    align-self: center;
+    width: 100%;
+    @media (max-width: 768px) {
+        margin-bottom: 20px;
+    }
     display: flex;
-    flex-flow: wrap;
     flex-direction: row;
-    justify-content: center;
-    align-items: center; */
 `;
 
 const query = graphql`
@@ -70,7 +73,7 @@ const query = graphql`
                 image {
                     childImageSharp {
                         fluid {
-                            src
+                            ...GatsbyImageSharpFluid_tracedSVG
                         }
                     }
                 }

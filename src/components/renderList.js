@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import propTypes from 'prop-types';
 import { buildSlug } from '../util';
 import { colours } from '../styles/theme';
-import Img from "gatsby-image"
+import Img from 'gatsby-image';
 
 const renderList = ({ node }) => {
     const imageSource = node.frontmatter.image.childImageSharp.fluid;
