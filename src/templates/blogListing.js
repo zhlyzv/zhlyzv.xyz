@@ -41,7 +41,7 @@ export const query = graphql`
                         category
                         image {
                             childImageSharp {
-                                fluid {
+                                fluid(maxWidth: 1300, maxHeight: 700, fit: COVER) {
                                     ...GatsbyImageSharpFluid_tracedSVG
                                 }
                             }

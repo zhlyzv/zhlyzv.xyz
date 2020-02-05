@@ -15,17 +15,17 @@ const Wrapper = styled.div`
     min-height: 100vh;
     max-width: 1360px;
     margin: 0 auto;
-    justify-content: center;
+    padding: 0 20px;
+    /* justify-content: center; */
+    @media (max-width: 768px) {
+        padding: 0 5px;
+    }
 `;
 
 const Content = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    @media (max-width: 768px) {
-        padding: 0 5px;
-    }
 `;
 
 const Layout = ({ children }) => {

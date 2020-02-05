@@ -30,6 +30,7 @@ const List = styled.ul`
     list-style: outside none none;
     border-top: 1px solid rgb(238, 238, 238);
     width: 60%;
+    padding: 0;
     @media (max-width: 768px) {
         width: 80%;
     }
@@ -37,13 +38,14 @@ const List = styled.ul`
 
 const Page = styled.li`
     min-width: 50px;
-    margin: -1px 0.5em 0px;
-    padding: 1em 0px;
+    margin: -1px 5px 0;
     text-align: center;
-    border-top: 1px solid ${props => (props.current ? 'black' : 'transparent')};
+    border-top: 1px solid ${({ current }) => (current ? 'black' : 'transparent')};
+    ${({ current }) => current && `padding: 20px;`}
     a {
         text-decoration: none;
         border-bottom: 0;
+        padding: 20px;
     }
 `;
 
