@@ -5,6 +5,9 @@ featured: true
 image: ../travel/images/japan/tokyo00.jpg
 category:
   - Travel
+  - Stuff
+  - Things
+  - Blabla
 tags:
   - Japan
   - Tokyo

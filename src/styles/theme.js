@@ -6,6 +6,7 @@ export const colours = {
     accent: '#6632aa',
     background: 'rgba(0,0,0,0.03)',
     grey: '#00000096',
+    borders: 'rgba(245, 245, 245, 0.7)',
 };
 
 export const font = {

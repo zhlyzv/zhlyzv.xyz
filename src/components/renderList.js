@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import styled from 'styled-components';
-import propTypes from 'prop-types';
-import { buildSlug } from '../util';
-import { colours } from '../styles/theme';
+import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
+import { buildSlug } from '../util';
+import { colours, font } from '../styles/theme';
 
 const renderList = ({ node }) => {
-    const imageSource = node.frontmatter.image.childImageSharp.fluid;
     const { slug } = node.fields;
-    const { title, category: categories } = node.frontmatter;
+    const { title, category: categories, date, image } = node.frontmatter;
+    const imageSource = image.childImageSharp.fluid;
 
     return (
         <Post key={slug}>
@@ -26,7 +26,7 @@ const renderList = ({ node }) => {
                             </>
                         ))}
                     </Category>
-                    <span>{node.frontmatter.date}</span>
+                    <span>{date}</span>
                 </Info>
             </Heading>
 
@@ -43,7 +43,7 @@ const Heading = styled.h2`
     justify-content: space-between;
     position: relative;
     padding: 15px 25px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     &:after,
     &:before {
         content: '';
@@ -74,6 +74,7 @@ const Title = styled.span`
 const Separator = styled.span`
     display: inline-block;
     padding: 0 5px !important;
+    color: ${colours.light};
 `;
 
 const Category = styled.span`
@@ -82,14 +83,16 @@ const Category = styled.span`
 
 const Info = styled.div`
     color: ${colours.grey};
-    font-size: 0.8rem;
+    font-family: ${font.body};
+    font-size: 0.7rem;
+    text-align: right;
     display: flex;
     flex-flow: column;
     text-align: right;
     span {
         padding: 5px 0;
         &:first-of-type {
-            border-bottom: 1px solid rgba(245, 245, 245, 0.7);
+            border-bottom: 1px solid ${colours.borders};
             padding-bottom: 7px;
         }
     }
@@ -100,7 +103,6 @@ const Info = styled.div`
 const Image = styled(Img)`
     transition: all 400ms ease-in-out;
     cursor: pointer;
-    /* border: 2px solid ${colours.lightest}; */
     border-radius: 3px;
     display: block;
     width: 100%;
@@ -116,19 +118,22 @@ const CategoryLink = styled(GatsbyLink)`
     text-decoration: none;
     border: 0;
     display: inline-block;
+    text-transform: lowercase;
+    font-weight: 400;
 `;
 
 const Post = styled.article`
     margin-bottom: 50px;
     align-self: center;
-    width: 100%;
+    width: 80%;
     @media (max-width: 768px) {
         margin-bottom: 20px;
+        width: 100%;
     }
-`
+`;
 
 renderList.propTypes = {
-    node: propTypes.object.isRequired,
+    node: PropTypes.object.isRequired,
 };
 
 export default renderList;

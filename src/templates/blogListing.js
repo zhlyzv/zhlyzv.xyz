@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import Layout from '../layouts/blogLayout';
 import Pagination from '../components/pagination';
@@ -18,6 +19,16 @@ const BlogPostList = ({ data, pageContext }) => {
             <Pagination currentPage={currentPage} numPages={numPages} />
         </Layout>
     );
+};
+
+BlogPostList.propTypes = {
+    data: PropTypes.shape({
+        allMarkdownRemark: PropTypes.object.isRequired,
+    }),
+    pageContext: PropTypes.shape({
+        currentPage: PropTypes.number.isRequired,
+        numPages: PropTypes.number.isRequired,
+    }),
 };
 
 export default BlogPostList;
