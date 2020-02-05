@@ -50,13 +50,7 @@ export const query = graphql`
                         title
                         date(formatString: "MMMM YYYY")
                         category
-                        image {
-                            childImageSharp {
-                                fluid(maxWidth: 1300, maxHeight: 700, fit: COVER) {
-                                    ...GatsbyImageSharpFluid_tracedSVG
-                                }
-                            }
-                        }
+                        ...BlogImage
                     }
                 }
             }

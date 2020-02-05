@@ -145,13 +145,7 @@ const query = graphql`
                 title
                 date(formatString: "MMMM YYYY")
                 category
-                image {
-                    childImageSharp {
-                        fluid {
-                            ...GatsbyImageSharpFluid_tracedSVG
-                        }
-                    }
-                }
+                ...BlogImage
             }
         }
     }
