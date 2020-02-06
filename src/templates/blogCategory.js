@@ -1,6 +1,7 @@
 import React from 'react';
-import kebabCase from 'lodash.kebabcase';
 import { graphql, Link } from 'gatsby';
+import { buildSlug } from '../util';
+import renderList from '../components/renderList';
 
 const BlogCategory = ({ data, pageContext }) => {
     const { allMarkdownRemark } = data;
@@ -11,38 +12,20 @@ const BlogCategory = ({ data, pageContext }) => {
         <>
             <h1>Categories:</h1>
             {pageContext.allCategories.map(cat => (
-                <Link to={`/blog/category/${kebabCase(cat)}`}>{cat}</Link>
+                <Link to={buildSlug('blog', 'category', cat)}>{cat}</Link>
             ))}
             <br />
 
-            {allMarkdownRemark.edges.map(({ node }) => {
-                const imageSource = node.frontmatter.image.childImageSharp.fluid.src;
-
-                return (
-                    <>
-                        <Link to={node.fields.slug}>
-                            <img src={imageSource} alt={node.frontmatter.title} />
-                            <h1>{node.frontmatter.title}</h1>
-                        </Link>
-                        <p>{node.frontmatter.date}</p>
-                        <p>
-                            In:{' '}
-                            {node.frontmatter.category.map(cat => (
-                                <Link to={`/blog/category/${kebabCase(cat)}`}>{cat}</Link>
-                            ))}
-                        </p>
-                    </>
-                );
-            })}
+            {allMarkdownRemark.edges.map(renderList)}
 
             <ul>
                 {Array.from({ length: pageContext.numPages }).map((item, i) => {
                     const index = i + 1;
-                    const category = kebabCase(pageContext.category);
+                    const category = buildSlug(pageContext.category);
                     const link =
                         index === 1
-                            ? `/blog/category/${category}`
-                            : `/blog/category/${category}/page/${index}`;
+                            ? buildSlug('blog', 'category', category)
+                            : buildSlug('blog', 'category', category, 'page', index);
 
                     return (
                         <li>

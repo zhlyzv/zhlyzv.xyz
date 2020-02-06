@@ -1,6 +1,5 @@
 const { createFilePath } = require('gatsby-source-filesystem');
 const path = require('path');
-const kebabCase = require('lodash.kebabcase');
 const { buildSlug } = require('./src/util');
 
 // TODO: Consider moving this to one of the config pages
@@ -78,7 +77,7 @@ const createCategoryPages = (postList, createPage, template) => {
     console.log('allCategories ', allCategories);
 
     allCategories.forEach(cat => {
-        const link = `/blog/category/${kebabCase(cat)}`;
+        const link = buildSlug('blog', 'category', cat);
         const numPages = Math.ceil(categoryCount[cat] / postsPerPage);
         console.log('category number of pages, ', numPages);
 
