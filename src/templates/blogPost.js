@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
@@ -12,7 +12,6 @@ const BlogPost = ({ data, pageContext }) => {
     const { title, date, image, category: categories } = markdownRemark.frontmatter;
     const { prev, next } = pageContext;
     const imageSource = image.childImageSharp.fluid;
-    console.log(pageContext);
 
     return (
         <Layout>
@@ -23,14 +22,10 @@ const BlogPost = ({ data, pageContext }) => {
                     {/* TODO: Should we make use of tags? <p>Tags: {tags.join()}</p> */}
                     <Category>
                         {categories.map((cat, i, arr) => (
-                            <>
-                                <Link key={i} to={buildSlug('blog', cat)}>
-                                    {cat}
-                                </Link>
-                                {arr.length > i && arr.length - 1 !== i && (
-                                    <Separator key={cat + i}>|</Separator>
-                                )}
-                            </>
+                            <Fragment key={i}>
+                                <Link to={buildSlug('blog', cat)}>{cat}</Link>
+                                {arr.length > i && arr.length - 1 !== i && <Separator>|</Separator>}
+                            </Fragment>
                         ))}
                     </Category>
                 </Header>

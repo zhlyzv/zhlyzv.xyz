@@ -56,19 +56,15 @@ const createBlogPostPages = (postList, createPage, template) => {
 };
 
 const createCategoryPages = (postList, createPage, template) => {
-    // Creating category page
     const categoryCount = categories.reduce((prev, curr) => {
         prev[curr] = (prev[curr] || 0) + 1;
         return prev;
     }, {});
     const allCategories = Object.keys(categoryCount);
-    console.log('category count, ', categoryCount);
-    console.log('allCategories ', allCategories);
-
+    // Create a category page per category, eg '/blog/travel'
     allCategories.forEach(cat => {
         const link = buildSlug('blog', cat);
         const numPages = Math.ceil(categoryCount[cat] / postsPerPage);
-        console.log(`category ${cat} creating ${numPages} pages`);
 
         Array.from({
             length: numPages,
@@ -139,7 +135,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
             year: 'numeric',
         });
         const { category } = node.frontmatter;
-        console.log(`node has the following categories ${node.frontmatter.category}`);
         /**
          * Update the slug for each Post
          *

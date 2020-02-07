@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
@@ -28,14 +28,10 @@ const BlogFeatured = () => {
 
                     <Category>
                         {categories.map((cat, i, arr) => (
-                            <>
-                                <Link key={i} to={buildSlug('blog', cat)}>
-                                    {cat}
-                                </Link>
-                                {arr.length > i && arr.length - 1 !== i && (
-                                    <Separator key={cat + i}>|</Separator>
-                                )}
-                            </>
+                            <Fragment key={i}>
+                                <Link to={buildSlug('blog', cat)}>{cat}</Link>
+                                {arr.length > i && arr.length - 1 !== i && <Separator>|</Separator>}
+                            </Fragment>
                         ))}
                     </Category>
                 </div>

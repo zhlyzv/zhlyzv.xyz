@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -18,14 +18,10 @@ const renderList = ({ node }) => {
                 <Info>
                     <Category>
                         {categories.map((cat, i, arr) => (
-                            <>
-                                <CategoryLink key={i} to={buildSlug('blog', cat)}>
-                                    {cat}
-                                </CategoryLink>
-                                {arr.length > i && arr.length - 1 !== i && (
-                                    <Separator key={cat + i}>|</Separator>
-                                )}
-                            </>
+                            <Fragment key={i}>
+                                <CategoryLink to={buildSlug('blog', cat)}>{cat}</CategoryLink>
+                                {arr.length > i && arr.length - 1 !== i && <Separator>|</Separator>}
+                            </Fragment>
                         ))}
                     </Category>
                     <span>{date}</span>
