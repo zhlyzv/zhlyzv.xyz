@@ -4,6 +4,10 @@ module.exports = {
         description: `Alexander Zhelyazov is a full-stack developer based in London.`,
         author: `@zhlyzv`,
         siteUrl: `https://zhlyzv.xyz/`,
+        socialMedia: {
+            github: 'https://github.com/zhlyzv',
+            linkedin: 'https://www.linkedin.com/in/azhelyazov/',
+        },
     },
     plugins: [
         `gatsby-plugin-styled-components`,

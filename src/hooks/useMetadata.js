@@ -9,6 +9,10 @@ const useMetadata = () => {
                         title
                         description
                         author
+                        socialMedia {
+                            github
+                            linkedin
+                        }
                     }
                 }
             }

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { colours } from '../styles/theme';
+import useMetadata from '../hooks/useMetadata';
 
 const Nav = styled.nav`
     // TODO: Use theme spacing constants instead of arbitrary numbers
@@ -50,12 +51,17 @@ const Nav = styled.nav`
     }
 `;
 // TODO: Move links to json config
-const HeaderNav = () => (
-    <Nav>
-        <a href='https://github.com'>GitHub</a>
-        <a href='https://linkedin.com'>LinkedIn</a>
-        <Link to='/blog'>Blog</Link>
-    </Nav>
-);
+const HeaderNav = () => {
+    const { socialMedia } = useMetadata();
+    console.log(socialMedia);
+    return (
+        <Nav>
+            <a href={socialMedia.github}>GitHub</a>
+            <a href={socialMedia.linkedin}>LinkedIn</a>
+            <Link to='/blog'>Blog</Link>
+            <Link to='/'>Home</Link>
+        </Nav>
+    );
+};
 
 export default HeaderNav;
