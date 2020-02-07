@@ -5,6 +5,7 @@ const { buildSlug } = require('./src/util');
 // TODO: Consider moving this to one of the config pages
 const postsPerPage = 6;
 const categories = [];
+
 // graphql doesn't throw errors
 // check result.errors and throw manually instead
 const errorWrapper = promise =>
@@ -15,21 +16,11 @@ const errorWrapper = promise =>
         return result;
     });
 
-// Get the category count in the
-// const getCategoryCount = postList => {
-//     const categories = postList.map(({ node }) => node.frontmatter.category);
-//     const categoryCount = categories.reduce((prev, curr) => {
-//         prev[curr] = (prev[curr] || 0) + 1;
-//         return prev;
-//     }, {});
-//     return categoryCount;
-// };
-
 const createBlogListingPage = (postList, createPage, template) => {
     const posts = postList.filter(({ node }) => !node.frontmatter.featured);
     const numPages = Math.ceil(posts.length / postsPerPage);
-
-    posts.forEach((_, i) => {
+    // Create a listing page based on the number of posts we want to show per page
+    Array.from({ length: numPages }).forEach((_, i) => {
         createPage({
             path: i === 0 ? `/blog` : `/blog/page/${i + 1}`,
             component: template,
@@ -164,11 +155,5 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
                 value: slug,
             });
         });
-        // console.log(`Updating node ${node.frontmatter.title} with new slug ${slug}`);
-        // createNodeField({
-        //     name: 'slug',
-        //     node,
-        //     value: slug,
-        // });
     }
 };
