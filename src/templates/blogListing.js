@@ -42,17 +42,7 @@ export const query = graphql`
             skip: $skip
         ) {
             edges {
-                node {
-                    fields {
-                        slug
-                    }
-                    frontmatter {
-                        title
-                        date(formatString: "MMMM YYYY")
-                        category
-                        ...BlogImage
-                    }
-                }
+                ...BlogListingPost
             }
         }
     }

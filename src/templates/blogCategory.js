@@ -1,31 +1,31 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { buildSlug } from '../util';
 import renderList from '../components/renderList';
 import Pagination from '../components/pagination';
+import Layout from '../layouts/blogLayout';
+import CategoryList from '../components/categoryList';
 
 const BlogCategory = ({ data, pageContext }) => {
     const { allMarkdownRemark } = data;
-    console.log('blog category data');
-    console.log(data);
+    const posts = allMarkdownRemark.edges.map(renderList);
+    const categories = (
+        <CategoryList
+            categories={pageContext.allCategories}
+            currentCategory={pageContext.category}
+        />
+    );
 
     return (
-        <>
-            <h1>Categories:</h1>
-            {pageContext.allCategories.map(cat => (
-                <Link to={buildSlug('blog', cat)}>{cat}</Link>
-            ))}
-            <br />
-
-            {allMarkdownRemark.edges.map(renderList)}
-
+        <Layout>
+            {categories}
+            {posts}
             <Pagination
                 currentPage={pageContext.currentPage}
                 numPages={pageContext.numPages}
                 category={pageContext.category}
             />
-        </>
+        </Layout>
     );
 };
 
@@ -50,23 +50,7 @@ export const query = graphql`
             skip: $skip
         ) {
             edges {
-                node {
-                    fields {
-                        slug
-                    }
-                    frontmatter {
-                        title
-                        date(formatString: "MMMM YYYY")
-                        category
-                        image {
-                            childImageSharp {
-                                fluid {
-                                    src
-                                }
-                            }
-                        }
-                    }
-                }
+                ...BlogListingPost
             }
         }
     }

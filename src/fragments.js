@@ -11,3 +11,19 @@ export const BlogImage = graphql`
         }
     }
 `;
+
+export const BlogListingPost = graphql`
+    fragment BlogListingPost on MarkdownRemarkEdge {
+        node {
+            fields {
+                slug
+            }
+            frontmatter {
+                title
+                date(formatString: "MMMM YYYY")
+                category
+                ...BlogImage
+            }
+        }
+    }
+`;
