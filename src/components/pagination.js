@@ -4,18 +4,21 @@ import PropTypes from 'prop-types';
 import { colours } from '../styles/theme';
 import { buildSlug } from '../util';
 
-const Pagination = ({ numPages, currentPage }) => {
+const Pagination = ({ numPages, currentPage, category }) => {
     if (numPages <= 1) {
         return null;
     }
 
     return (
         <List>
-            {Array.from({ length: numPages }).map((item, i) => {
+            {Array.from({ length: numPages }).map((_, i) => {
                 const index = i + 1;
-
                 const baseLink = '/blog/';
-                const link = index === 1 ? buildSlug(baseLink) : buildSlug(baseLink, 'page', index);
+                const cat = category || '';
+                const link =
+                    index === 1
+                        ? buildSlug(baseLink, cat)
+                        : buildSlug(baseLink, cat, 'page', index);
 
                 return (
                     <Page current={currentPage === index} key={link}>
@@ -53,8 +56,9 @@ const Page = styled.li`
 `;
 
 Pagination.propTypes = {
-    numPages: PropTypes.number,
-    currentPage: PropTypes.number,
+    numPages: PropTypes.number.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    category: PropTypes.string,
 };
 
 export default Pagination;

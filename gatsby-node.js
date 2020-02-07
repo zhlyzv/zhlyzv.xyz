@@ -45,12 +45,10 @@ const createBlogListingPage = (postList, createPage, template) => {
 
 const createBlogPostPages = (postList, createPage, template) => {
     // Loop throught all posts and create a page for each through the createPage action
-    postList.forEach((post, index, arr) => {
-        // Find out what categories we have and push them into an array for later use
-        // post.node.frontmatter.category.forEach(cat => categories.push(cat));
+    postList.forEach((post, i, arr) => {
         // find what the next and previous posts are
-        const prev = arr[index - 1];
-        const next = arr[index + 1];
+        const prev = arr[i - 1];
+        const next = arr[i + 1];
         const pagePath = post.node.fields.slug;
         post.node.frontmatter.category.forEach(cat => categories.push(cat));
 
@@ -77,9 +75,9 @@ const createCategoryPages = (postList, createPage, template) => {
     console.log('allCategories ', allCategories);
 
     allCategories.forEach(cat => {
-        const link = buildSlug('blog', 'category', cat);
+        const link = buildSlug('blog', cat);
         const numPages = Math.ceil(categoryCount[cat] / postsPerPage);
-        console.log('category number of pages, ', numPages);
+        console.log(`category ${cat} creating ${numPages} pages`);
 
         Array.from({
             length: numPages,
@@ -88,7 +86,6 @@ const createCategoryPages = (postList, createPage, template) => {
                 path: i === 0 ? link : `${link}/page/${i + 1}`,
                 component: template,
                 context: {
-                    // TODO: what is this?
                     allCategories,
                     category: cat,
                     limit: postsPerPage,
@@ -150,11 +147,28 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         const year = new Date(node.frontmatter.date).toLocaleDateString('en-EN', {
             year: 'numeric',
         });
-
-        createNodeField({
-            name: 'slug',
-            node,
-            value: buildSlug('blog', year, value.replace('/blog/', '')),
+        const { category } = node.frontmatter;
+        console.log(`node has the following categories ${node.frontmatter.category}`);
+        /**
+         * Update the slug for each Post
+         *
+         * In cases where a post has multiple categories, multiple slugs are created.
+         * Eg. a Post is categorised as both 'travel' and 'japan' then we get two
+         * slugs /blog/travel/POST_DATE/POST_NAME and /blog/japan/POST_DATE/POST_NAME
+         */
+        category.forEach(cat => {
+            const slug = buildSlug('blog', cat, year, value.replace('/blog/', ''));
+            createNodeField({
+                name: 'slug',
+                node,
+                value: slug,
+            });
         });
+        // console.log(`Updating node ${node.frontmatter.title} with new slug ${slug}`);
+        // createNodeField({
+        //     name: 'slug',
+        //     node,
+        //     value: slug,
+        // });
     }
 };

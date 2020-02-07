@@ -1,7 +1,9 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
+import PropTypes from 'prop-types';
 import { buildSlug } from '../util';
 import renderList from '../components/renderList';
+import Pagination from '../components/pagination';
 
 const BlogCategory = ({ data, pageContext }) => {
     const { allMarkdownRemark } = data;
@@ -18,28 +20,23 @@ const BlogCategory = ({ data, pageContext }) => {
 
             {allMarkdownRemark.edges.map(renderList)}
 
-            <ul>
-                {Array.from({ length: pageContext.numPages }).map((item, i) => {
-                    const index = i + 1;
-                    const category = buildSlug(pageContext.category);
-                    const link =
-                        index === 1
-                            ? buildSlug('blog', 'category', category)
-                            : buildSlug('blog', 'category', category, 'page', index);
-
-                    return (
-                        <li>
-                            {pageContext.currentPage === index ? (
-                                <span>{index}</span>
-                            ) : (
-                                <a href={link}>{index}</a>
-                            )}
-                        </li>
-                    );
-                })}
-            </ul>
+            <Pagination
+                currentPage={pageContext.currentPage}
+                numPages={pageContext.numPages}
+                category={pageContext.category}
+            />
         </>
     );
+};
+
+BlogCategory.propTypes = {
+    data: PropTypes.object.isRequired,
+    pageContext: PropTypes.shape({
+        currentPage: PropTypes.number,
+        numPages: PropTypes.number,
+        category: PropTypes.string,
+        allCategories: PropTypes.array,
+    }),
 };
 
 export default BlogCategory;
