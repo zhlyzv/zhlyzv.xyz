@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const HomeSection = ({ sectionName, children, titleAlign }) => (
-    <SectionWrapper>
-        <ContentWrapper>
-            <SectionHeading titleAlign={titleAlign}>{sectionName}</SectionHeading>
+    <Wrapper>
+        <Content>
+            <Heading titleAlign={titleAlign}>{sectionName}</Heading>
             {children}
-        </ContentWrapper>
-    </SectionWrapper>
+        </Content>
+    </Wrapper>
 );
 
-const SectionHeading = styled.h2`
+const Heading = styled.h2`
     transform: rotate(${props => (props.titleAlign === 'left' ? '-' : '')}90deg);
     font-size: 1.5rem;
     font-weight: 600;
@@ -29,7 +29,7 @@ const SectionHeading = styled.h2`
     }
 `;
 
-const SectionWrapper = styled.section`
+const Wrapper = styled.section`
     &:nth-of-type(odd) {
         background: rgba(0, 0, 0, 0.03);
     }
@@ -55,7 +55,7 @@ const SectionWrapper = styled.section`
     }
 `;
 
-const ContentWrapper = styled.div`
+const Content = styled.div`
     max-width: 1360px;
     position: relative;
     width: 100%;

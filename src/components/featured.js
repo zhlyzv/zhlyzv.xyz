@@ -32,7 +32,9 @@ const BlogFeatured = () => {
                                 <Link key={i} to={buildSlug('blog', cat)}>
                                     {cat}
                                 </Link>
-                                {arr.length > i && arr.length - 1 !== i && <Separator>|</Separator>}
+                                {arr.length > i && arr.length - 1 !== i && (
+                                    <Separator key={cat + i}>|</Separator>
+                                )}
                             </>
                         ))}
                     </Category>

@@ -10,7 +10,6 @@ const renderList = ({ node }) => {
     const { slug } = node.fields;
     const { title, category: categories, date, image } = node.frontmatter;
     const imageSource = image.childImageSharp.fluid;
-    console.log(`post slug ${slug}`);
 
     return (
         <Post key={slug}>
@@ -23,7 +22,9 @@ const renderList = ({ node }) => {
                                 <CategoryLink key={i} to={buildSlug('blog', cat)}>
                                     {cat}
                                 </CategoryLink>
-                                {arr.length > i && arr.length - 1 !== i && <Separator>|</Separator>}
+                                {arr.length > i && arr.length - 1 !== i && (
+                                    <Separator key={cat + i}>|</Separator>
+                                )}
                             </>
                         ))}
                     </Category>

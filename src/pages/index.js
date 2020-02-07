@@ -8,7 +8,7 @@ import Intro from '../components/intro';
 import Work from '../components/work';
 import Projects from '../components/projects';
 import Contact from '../components/contact';
-import HomepageSection from '../components/homepageSection';
+import Section from '../components/homepageSection';
 
 const Home = ({ data }) => {
     const { intro, title, work, contact, projects } = data.homeJson;
@@ -16,22 +16,22 @@ const Home = ({ data }) => {
     return (
         <Layout>
             <SEO title={title} keywords={[`gatsby`, `react`, 'portfolio']} />
-            <HomepageSection sectionName={intro.heading} titleAlign='right'>
+            <Section sectionName={intro.heading} titleAlign='right'>
                 <Intro title={intro.title} name={intro.name} summary={intro.summary} />
-            </HomepageSection>
-            <HomepageSection sectionName={work.heading} titleAlign='left'>
+            </Section>
+            <Section sectionName={work.heading} titleAlign='left'>
                 <Work items={work.items} />
-            </HomepageSection>
-            <HomepageSection sectionName={projects.heading} titleAlign='right'>
+            </Section>
+            <Section sectionName={projects.heading} titleAlign='right'>
                 <Projects
                     text={projects.text}
                     ctas={[projects.cta_1, projects.cta_2]}
                     links={[projects.link_1, projects.link_2]}
                 />
-            </HomepageSection>
-            <HomepageSection sectionName={contact.heading} titleAlign='left'>
+            </Section>
+            <Section sectionName={contact.heading} titleAlign='left'>
                 <Contact text={contact.text} email={contact.email} cta={contact.email_cta} />
-            </HomepageSection>
+            </Section>
         </Layout>
     );
 };
