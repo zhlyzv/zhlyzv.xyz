@@ -14,7 +14,7 @@ const BlogCategory = ({ data, pageContext }) => {
         <>
             <h1>Categories:</h1>
             {pageContext.allCategories.map(cat => (
-                <Link to={buildSlug('blog', 'category', cat)}>{cat}</Link>
+                <Link to={buildSlug('blog', cat)}>{cat}</Link>
             ))}
             <br />
 

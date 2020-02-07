@@ -29,7 +29,7 @@ const BlogFeatured = () => {
                     <Category>
                         {categories.map((cat, i, arr) => (
                             <>
-                                <Link key={i} to={buildSlug('blog', 'category', cat)}>
+                                <Link key={i} to={buildSlug('blog', cat)}>
                                     {cat}
                                 </Link>
                                 {arr.length > i && arr.length - 1 !== i && <Separator>|</Separator>}
