@@ -16,11 +16,11 @@ export const font = {
 };
 
 export const spacing = {
-    tiny: 5,
-    small: 10,
-    medium: 15,
-    large: 25,
-    huge: 50,
+    tiny: '5px',
+    small: '10px',
+    medium: '15px',
+    large: '25px',
+    huge: '50px',
 };
 
 export const breakpoint = {

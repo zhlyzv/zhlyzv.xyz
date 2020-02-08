@@ -41,13 +41,13 @@ const Wrapper = styled.div`
 `;
 
 const GridItem = styled.div`
-    margin-bottom: ${spacing.huge}px;
+    margin-bottom: ${spacing.huge};
     display: flex;
     flex: 1 50%;
     justify-content: center;
     @media (max-width: ${breakpoint.mobile}) {
-        padding: ${spacing.tiny}px;
-        margin-bottom: ${spacing.large}px;
+        padding: ${spacing.tiny};
+        margin-bottom: ${spacing.large};
     }
 `;
 

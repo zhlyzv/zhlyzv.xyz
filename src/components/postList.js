@@ -145,7 +145,7 @@ const CategoryLink = styled(GatsbyLink)`
 `;
 
 const Post = styled.article`
-    margin-bottom: ${spacing.huge}px;
+    margin-bottom: ${spacing.huge};
     align-self: center;
     width: 80%;
     @media (max-width: ${breakpoint.mobile}) {

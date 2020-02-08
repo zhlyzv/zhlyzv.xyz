@@ -109,7 +109,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   input, textarea {
-    padding: ${spacing.small}px ${spacing.medium}px;
+    padding: ${spacing.small} ${spacing.medium};
     line-height: normal;
     background-color: ${colours.light};
     box-shadow: none;
@@ -122,7 +122,7 @@ const GlobalStyle = createGlobalStyle`
     background: none;
     border: 1px solid;
     text-decoration: none;
-    padding: ${spacing.small}px ${spacing.large}px;
+    padding: ${spacing.small} ${spacing.large};
     cursor: pointer;
     transition: all .2s ease-in;
     font-family: ${font.heading};

@@ -47,11 +47,11 @@ const Page = styled.li`
     margin: -1px 5px 0;
     text-align: center;
     border-top: 1px solid ${({ current }) => (current ? 'black' : 'transparent')};
-    ${({ current }) => current && `padding: ${spacing.medium}px;`}
+    ${({ current }) => current && `padding: ${spacing.medium};`}
     a {
         text-decoration: none;
         border-bottom: 0;
-        padding: ${spacing.medium}px;
+        padding: ${spacing.medium};
     }
 `;
 

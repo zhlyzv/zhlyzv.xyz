@@ -23,7 +23,7 @@ const categoryList = ({ categories, currentCategory }) => {
 };
 
 const Wrapper = styled.div`
-    padding: ${spacing.large}px 0;
+    padding: ${spacing.large} 0;
 `;
 
 const Heading = styled.h1`
@@ -31,7 +31,7 @@ const Heading = styled.h1`
 `;
 
 const ListTitle = styled.p`
-    margin-bottom: ${spacing.small}px;
+    margin-bottom: ${spacing.small};
 `;
 
 const List = styled.ul`
@@ -43,7 +43,7 @@ const List = styled.ul`
 
 const Category = styled.li`
     display: inline-block;
-    margin: 0 ${spacing.tiny}px;
+    margin: 0 ${spacing.tiny};
     font-size: 0.9rem;
     &:first-of-type {
         margin-left: 0;

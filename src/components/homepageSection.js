@@ -17,7 +17,7 @@ const Heading = styled.h2`
     font-size: 1.5rem;
     font-weight: 600;
     position: absolute;
-    top: calc(10% + ${spacing.large}px);
+    top: calc(10% + ${spacing.large});
     left: ${props => (props.titleAlign === 'left' ? '0' : 'auto')};
     right: ${props => (props.titleAlign === 'left' ? 'auto' : '0')};
     flex: 1 100%;
@@ -40,19 +40,19 @@ const Wrapper = styled.section`
     }
     display: flex;
     flex-flow: row wrap;
-    padding: ${spacing.large}px ${spacing.huge}px;
+    padding: ${spacing.large} ${spacing.huge};
     position: relative;
     margin: 0 auto;
     align-items: center;
     justify-content: center;
-    margin-bottom: ${spacing.large}px;
+    margin-bottom: ${spacing.large};
     min-height: 30vh;
     p {
         max-width: 50%;
         letter-spacing: 0.06rem;
     }
     @media (max-width: ${breakpoint.mobile}) {
-        padding: ${spacing.small}px 0;
+        padding: ${spacing.small} 0;
         p {
             font-size: 0.85rem;
             max-width: 70%;

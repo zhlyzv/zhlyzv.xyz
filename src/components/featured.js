@@ -123,12 +123,12 @@ const Category = styled.p`
 `;
 
 const Wrapper = styled.article`
-    margin-bottom: ${spacing.huge}px;
+    margin-bottom: ${spacing.huge};
     align-self: center;
     width: 100%;
     display: flex;
     flex-direction: row;
-    padding-bottom: ${spacing.huge}px;
+    padding-bottom: ${spacing.huge};
     border-bottom: 1px solid ${colours.borders};
     @media (max-width: ${breakpoint.mobile}) {
         margin-bottom: 30px;

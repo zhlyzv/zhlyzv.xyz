@@ -55,23 +55,23 @@ const BlogPost = ({ data, pageContext }) => {
 };
 
 const Content = styled.div`
-    margin-bottom: ${spacing.huge}px;
+    margin-bottom: ${spacing.huge};
 `;
 
 const Header = styled.header`
-    margin-bottom: ${spacing.large}px;
+    margin-bottom: ${spacing.large};
 `;
 
 const Title = styled.h1`
-    margin-bottom: ${spacing.small}px;
+    margin-bottom: ${spacing.small};
 `;
 
 const Date = styled.p`
     &:after {
         content: '';
-        width: ${spacing.small}px;
+        width: ${spacing.small};
         display: inline-block;
-        margin-left: ${spacing.small}px;
+        margin-left: ${spacing.small};
         position: relative;
         top: -2px;
         border-top: 1px solid ${colours.light};
@@ -79,14 +79,14 @@ const Date = styled.p`
     color: ${colours.grey};
     margin-bottom: 0px;
     display: inline-block;
-    margin-right: ${spacing.small}px;
+    margin-right: ${spacing.small};
     letter-spacing: 2px;
     font-size: 0.7rem;
 `;
 
 const Separator = styled.span`
     display: inline-block;
-    padding: 0 ${spacing.tiny}px;
+    padding: 0 ${spacing.tiny};
     color: ${colours.light};
 `;
 
@@ -94,7 +94,7 @@ const Category = styled.p`
     color: ${colours.grey};
     margin-bottom: 0px;
     display: inline-block;
-    margin-right: ${spacing.small}px;
+    margin-right: ${spacing.small};
     letter-spacing: 2px;
     font-size: 0.7rem;
     text-transform: lowercase;
@@ -118,7 +118,7 @@ const Pagination = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     max-width: 60%;
-    margin: 0 auto ${spacing.huge}px;
+    margin: 0 auto ${spacing.huge};
     @media (max-width: ${breakpoint.mobile}) {
         max-width: 80%;
     }

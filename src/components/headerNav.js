@@ -11,15 +11,15 @@ const Nav = styled.nav`
         text-orientation: mixed;
         position: fixed;
         z-index: 999;
-        right: ${spacing.small}px;
-        top: ${spacing.small}px;
+        right: ${spacing.small};
+        top: ${spacing.small};
         a {
             display: inline;
             border: 0;
             text-align: center;
             vertical-align: middle;
             color: ${colours.dark};
-            margin: ${spacing.small}px 0;
+            margin: ${spacing.small} 0;
             position: relative;
             text-decoration: underline double;
 
@@ -35,7 +35,7 @@ const Nav = styled.nav`
             writing-mode: horizontal-tb;
             text-orientation: upright;
             justify-self: evenly;
-            padding: ${spacing.medium}px ${spacing.small}px;
+            padding: ${spacing.medium} ${spacing.small};
             right: auto;
             top: auto;
             a {
@@ -46,7 +46,7 @@ const Nav = styled.nav`
     }
     a {
         color: ${colours.dark};
-        padding: 0 ${spacing.small}px;
+        padding: 0 ${spacing.small};
     }
 `;
 
