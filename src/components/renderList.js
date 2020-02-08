@@ -14,7 +14,9 @@ const renderList = ({ node }) => {
     return (
         <Post key={slug}>
             <Heading>
-                <Title>{title}</Title>
+                <Title>
+                    <TitleLink to={slug}>{title}</TitleLink>
+                </Title>
                 <Info>
                     <Category>
                         {categories.map((cat, i, arr) => (
@@ -110,6 +112,14 @@ const Link = styled(GatsbyLink)`
     text-decoration: none;
     border: 0;
     display: block;
+`;
+
+const TitleLink = styled(Link)`
+    color: ${colours.dark};
+    &:hover {
+        color: ${colours.light};
+        background: none;
+    }
 `;
 
 const CategoryLink = styled(GatsbyLink)`

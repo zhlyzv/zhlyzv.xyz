@@ -69,18 +69,24 @@ const Info = styled.div`
 `;
 
 const Link = styled(GatsbyLink)`
-    text-decoration: none;
-    border: 0;
+    /* text-decoration: none; */
 `;
 
 const TitleLink = styled(Link)`
     display: block;
     color: black;
+    border: 0;
+    &:hover {
+        background: none;
+        color: ${colours.light};
+    }
 `;
 
 const ImageLink = styled(Link)`
     flex: 1 1 60%;
     display: block;
+    border: 0;
+    background: none;
 `;
 
 const FeaturedTitle = styled.h1`

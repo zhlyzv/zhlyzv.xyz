@@ -12,7 +12,7 @@ export const colours = {
 export const font = {
     size: 18,
     body: 'Helvetica Neue, Helvetica, Arial, sans-serif',
-    heading: 'Georgia, sans-serif',
+    heading: 'Arial Black, Arial, sans-serif',
 };
 
 export const spacing = {

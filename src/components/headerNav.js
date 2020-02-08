@@ -14,7 +14,6 @@ const Nav = styled.nav`
         right: 10px;
         top: 10px;
         a {
-            transition: all 0.2s linear;
             display: inline;
             border: 0;
             text-align: center;
@@ -28,7 +27,7 @@ const Nav = styled.nav`
             :active,
             :focus {
                 color: ${colours.light};
-                text-decoration: underline overline;
+                /* text-decoration: underline overline; */
             }
         }
         @media (max-width: 768px) {
@@ -50,7 +49,7 @@ const Nav = styled.nav`
         padding: 0 10px;
     }
 `;
-// TODO: Move links to json config
+
 const HeaderNav = () => {
     const { socialMedia } = useMetadata();
     console.log(socialMedia);

@@ -34,7 +34,7 @@ const BlogPost = ({ data, pageContext }) => {
                     <Img fluid={imageSource} alt={title} />
                 </ImageLink>
                 {/* TODO: Should we instead use MDX to build blog posts etc? */}
-                <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+                <Content dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
 
                 <Pagination>
                     {prev && (
@@ -53,6 +53,10 @@ const BlogPost = ({ data, pageContext }) => {
         </Layout>
     );
 };
+
+const Content = styled.div`
+    margin-bottom: 50px;
+`;
 
 const Header = styled.header`
     margin-bottom: 20px;
@@ -112,9 +116,9 @@ const Post = styled.article`
 const Pagination = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     max-width: 60%;
-    margin: 0 auto;
+    margin: 0 auto 50px;
     @media (max-width: 768px) {
         max-width: 80%;
     }

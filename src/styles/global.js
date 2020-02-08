@@ -85,15 +85,17 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
+    /* box-shadow:${colours.accent} 0px -2px 0px inset; */
     color: ${colours.accent};
     display: inline-block;
     border-bottom: 1px solid;
-    transition: all .2s ease;
+    transition: all .4s ease;
     text-decoration: none;
     &:hover,
     &:active,
     &:focus {
       color: ${colours.light};
+      background: ${colours.accent};
     }
     &:focus {
       outline: 1px solid;

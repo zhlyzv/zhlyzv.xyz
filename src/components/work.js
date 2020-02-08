@@ -18,6 +18,9 @@ const Work = ({ items }) => (
 
 const LogoLink = styled.a`
     border: 0;
+    &:hover {
+        background: none;
+    }
 `;
 
 const LogoImg = styled.img`
