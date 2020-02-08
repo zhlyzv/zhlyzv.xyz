@@ -16,7 +16,7 @@ const BlogPost = ({ data, pageContext }) => {
 
     return (
         <Layout>
-            <SEO title={title} keywoards={categories} />
+            <SEO title={`${title} | ${categories}`} keywoards={categories} />
             <Post>
                 <Header>
                     <Title>{title}</Title>
@@ -57,7 +57,7 @@ const BlogPost = ({ data, pageContext }) => {
 };
 
 const Content = styled.div`
-    margin-bottom: ${spacing.huge};
+    margin-bottom: ${spacing.large};
 `;
 
 const Header = styled.header`
@@ -104,6 +104,7 @@ const Category = styled.p`
 
 const ImageLink = styled(Link)`
     display: block;
+    margin-bottom: ${spacing.large};
 `;
 
 const Post = styled.article`

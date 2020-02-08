@@ -1,16 +1,14 @@
 ---
-title: Tokyo 2
-date: 2017-12-04
-featured: true
-image: ../travel/images/japan/tokyo00.jpg
+title: Japan Travel 1
+date: 2017-12-07
+featured: false
+image: ../travel/images/japan/tokyo03.jpg
 category:
   - Travel
-  - Stuff
-  - Things
-  - Blabla
+  - Japan
 tags:
   - Japan
   - Tokyo
 ---
 
-Lorem ipsum dolor amet helvetica cardigan readymade wayfarers cold-pressed poutine. Enamel pin polaroid gluten-free helvetica single-origin coffee. Marfa cold-pressed williamsburg taxidermy Kickstarter semiotics tote bag heirloom gastropub. Quinoa pop-up brunch, vice hashtag biodiesel selfies affogato meditation pork pok heirloom chillwave yr meh marfa. Direct trade poke try-hard, raclette pok pok af succulents tbh keffiyeh four dollar toast pork belly ramps squid.
+Sake barrels near Meiji Jingu shrine in Tokyo.
