@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import VisuallyHidden from './util/visuallyHidden';
+import { spacing, breakpoint } from '../styles/theme';
 
 const Work = ({ items }) => (
     <Wrapper>
@@ -25,7 +26,7 @@ const LogoLink = styled.a`
 
 const LogoImg = styled.img`
     width: 250px;
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoint.mobile}) {
         width: 100px;
     }
 `;
@@ -40,13 +41,13 @@ const Wrapper = styled.div`
 `;
 
 const GridItem = styled.div`
-    margin-bottom: 50px;
+    margin-bottom: ${spacing.huge}px;
     display: flex;
     flex: 1 50%;
     justify-content: center;
-    @media (max-width: 767px) {
-        padding: 5px;
-        margin-bottom: 25px;
+    @media (max-width: ${breakpoint.mobile}) {
+        padding: ${spacing.tiny}px;
+        margin-bottom: ${spacing.large}px;
     }
 `;
 

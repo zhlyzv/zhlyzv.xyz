@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { spacing, breakpoint } from '../styles/theme';
 
 const HomeSection = ({ sectionName, children, titleAlign }) => (
     <Wrapper>
@@ -16,18 +17,18 @@ const Heading = styled.h2`
     font-size: 1.5rem;
     font-weight: 600;
     position: absolute;
-    top: calc(10% + 25px);
+    top: calc(10% + ${spacing.large}px);
     left: ${props => (props.titleAlign === 'left' ? '0' : 'auto')};
     right: ${props => (props.titleAlign === 'left' ? 'auto' : '0')};
     flex: 1 100%;
     z-index: 1;
-    @media (max-width: 1050px) {
+    @media (max-width: ${breakpoint.tablet}) {
         font-size: 0.9rem;
         top: 15%;
         left: ${props => (props.titleAlign === 'left' ? '2%' : 'auto')};
         right: ${props => (props.titleAlign === 'left' ? 'auto' : '2%')};
     }
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoint.mobile}) {
         left: ${props => (props.titleAlign === 'left' ? '-4%' : 'auto')};
         right: ${props => (props.titleAlign === 'left' ? 'auto' : '-4%')};
     }
@@ -39,19 +40,19 @@ const Wrapper = styled.section`
     }
     display: flex;
     flex-flow: row wrap;
-    padding: 25px 50px;
+    padding: ${spacing.large}px ${spacing.huge}px;
     position: relative;
     margin: 0 auto;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: ${spacing.large}px;
     min-height: 30vh;
     p {
         max-width: 50%;
         letter-spacing: 0.06rem;
     }
-    @media (max-width: 767px) {
-        padding: 10px 0;
+    @media (max-width: ${breakpoint.mobile}) {
+        padding: ${spacing.small}px 0;
         p {
             font-size: 0.85rem;
             max-width: 70%;

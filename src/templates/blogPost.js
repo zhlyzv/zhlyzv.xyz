@@ -4,7 +4,7 @@ import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Layout from '../layouts/homeLayout';
-import { colours } from '../styles/theme';
+import { colours, spacing, breakpoint } from '../styles/theme';
 import { buildSlug } from '../util';
 
 const BlogPost = ({ data, pageContext }) => {
@@ -55,23 +55,23 @@ const BlogPost = ({ data, pageContext }) => {
 };
 
 const Content = styled.div`
-    margin-bottom: 50px;
+    margin-bottom: ${spacing.huge}px;
 `;
 
 const Header = styled.header`
-    margin-bottom: 20px;
+    margin-bottom: ${spacing.large}px;
 `;
 
 const Title = styled.h1`
-    margin-bottom: 10px;
+    margin-bottom: ${spacing.small}px;
 `;
 
 const Date = styled.p`
     &:after {
         content: '';
-        width: 10px;
+        width: ${spacing.small}px;
         display: inline-block;
-        margin-left: 10px;
+        margin-left: ${spacing.small}px;
         position: relative;
         top: -2px;
         border-top: 1px solid ${colours.light};
@@ -79,14 +79,14 @@ const Date = styled.p`
     color: ${colours.grey};
     margin-bottom: 0px;
     display: inline-block;
-    margin-right: 10px;
+    margin-right: ${spacing.small}px;
     letter-spacing: 2px;
     font-size: 0.7rem;
 `;
 
 const Separator = styled.span`
     display: inline-block;
-    padding: 0 5px;
+    padding: 0 ${spacing.tiny}px;
     color: ${colours.light};
 `;
 
@@ -94,7 +94,7 @@ const Category = styled.p`
     color: ${colours.grey};
     margin-bottom: 0px;
     display: inline-block;
-    margin-right: 10px;
+    margin-right: ${spacing.small}px;
     letter-spacing: 2px;
     font-size: 0.7rem;
     text-transform: lowercase;
@@ -108,7 +108,7 @@ const Post = styled.article`
     max-width: 1360px;
     margin: 0 auto;
     padding: 0 10%;
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoint.mobile}) {
         padding: 0 5%;
     }
 `;
@@ -118,8 +118,8 @@ const Pagination = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     max-width: 60%;
-    margin: 0 auto 50px;
-    @media (max-width: 767px) {
+    margin: 0 auto ${spacing.huge}px;
+    @media (max-width: ${breakpoint.mobile}) {
         max-width: 80%;
     }
 `;

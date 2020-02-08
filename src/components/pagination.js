@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { colours } from '../styles/theme';
+import { colours, spacing, breakpoint } from '../styles/theme';
 import { buildSlug } from '../util';
 
 const Pagination = ({ numPages, currentPage, category }) => {
@@ -37,7 +37,7 @@ const List = styled.ul`
     border-top: 1px solid ${colours.borders};
     width: 60%;
     padding: 0;
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoint.mobile}) {
         width: 80%;
     }
 `;
@@ -47,11 +47,11 @@ const Page = styled.li`
     margin: -1px 5px 0;
     text-align: center;
     border-top: 1px solid ${({ current }) => (current ? 'black' : 'transparent')};
-    ${({ current }) => current && `padding: 20px;`}
+    ${({ current }) => current && `padding: ${spacing.medium}px;`}
     a {
         text-decoration: none;
         border-bottom: 0;
-        padding: 20px;
+        padding: ${spacing.medium}px;
     }
 `;
 

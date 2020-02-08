@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { colours } from '../styles/theme';
+import { colours, spacing, breakpoint } from '../styles/theme';
 import useMetadata from '../hooks/useMetadata';
 
 const Nav = styled.nav`
@@ -11,15 +11,15 @@ const Nav = styled.nav`
         text-orientation: mixed;
         position: fixed;
         z-index: 999;
-        right: 10px;
-        top: 10px;
+        right: ${spacing.small}px;
+        top: ${spacing.small}px;
         a {
             display: inline;
             border: 0;
             text-align: center;
             vertical-align: middle;
             color: ${colours.dark};
-            margin: 10px 0;
+            margin: ${spacing.small}px 0;
             position: relative;
             text-decoration: underline double;
 
@@ -30,12 +30,12 @@ const Nav = styled.nav`
                 /* text-decoration: underline overline; */
             }
         }
-        @media (max-width: 767px) {
+        @media (max-width: ${breakpoint.mobile}) {
             position: relative;
             writing-mode: horizontal-tb;
             text-orientation: upright;
             justify-self: evenly;
-            padding: 20px 10px;
+            padding: ${spacing.medium}px ${spacing.small}px;
             right: auto;
             top: auto;
             a {
@@ -46,7 +46,7 @@ const Nav = styled.nav`
     }
     a {
         color: ${colours.dark};
-        padding: 0 10px;
+        padding: 0 ${spacing.small}px;
     }
 `;
 

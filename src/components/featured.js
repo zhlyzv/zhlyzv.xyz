@@ -3,7 +3,7 @@ import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { buildSlug } from '../util';
-import { colours } from '../styles/theme';
+import { colours, spacing, breakpoint } from '../styles/theme';
 
 const BlogFeatured = () => {
     // eslint-disable-next-line
@@ -61,7 +61,7 @@ const Info = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoint.mobile}) {
         margin-bottom: 20px;
         justify-content: left;
         align-items: flex-start;
@@ -123,14 +123,14 @@ const Category = styled.p`
 `;
 
 const Wrapper = styled.article`
-    margin-bottom: 50px;
+    margin-bottom: ${spacing.huge}px;
     align-self: center;
     width: 100%;
     display: flex;
     flex-direction: row;
-    padding-bottom: 50px;
+    padding-bottom: ${spacing.huge}px;
     border-bottom: 1px solid ${colours.borders};
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoint.mobile}) {
         margin-bottom: 30px;
         flex-direction: column-reverse;
         padding-bottom: 0;

@@ -16,7 +16,14 @@ export const font = {
 };
 
 export const spacing = {
+    tiny: 5,
     small: 10,
     medium: 15,
-    large: 20,
+    large: 25,
+    huge: 50,
+};
+
+export const breakpoint = {
+    tablet: '1050px',
+    mobile: '767px',
 };

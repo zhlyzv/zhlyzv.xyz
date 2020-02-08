@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import HeaderNav from './headerNav';
-import { colours } from '../styles/theme';
+import { colours, breakpoint } from '../styles/theme';
 
 const Header = () => (
     <StyledHeader>
@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
     flex-direction: row;
     place-items: center center;
     justify-content: space-between;
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoint.mobile}) {
         background: ${colours.background};
         display: flex;
         justify-content: center;

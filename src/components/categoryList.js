@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { buildSlug } from '../util';
+import { spacing } from '../styles/theme';
 
 const categoryList = ({ categories, currentCategory }) => {
     const otherCategories = categories.filter(cat => cat !== currentCategory);
@@ -22,7 +23,7 @@ const categoryList = ({ categories, currentCategory }) => {
 };
 
 const Wrapper = styled.div`
-    padding: 25px 0;
+    padding: ${spacing.large}px 0;
 `;
 
 const Heading = styled.h1`
@@ -30,7 +31,7 @@ const Heading = styled.h1`
 `;
 
 const ListTitle = styled.p`
-    margin-bottom: 10px;
+    margin-bottom: ${spacing.small}px;
 `;
 
 const List = styled.ul`
@@ -42,7 +43,7 @@ const List = styled.ul`
 
 const Category = styled.li`
     display: inline-block;
-    margin: 0 5px;
+    margin: 0 ${spacing.tiny}px;
     font-size: 0.9rem;
     &:first-of-type {
         margin-left: 0;

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import normalize from './vendor/normalize';
-import { colours, spacing, font } from './theme';
+import { colours, spacing, font, breakpoint } from './theme';
 
 // TODO: utilise styled-componentns themes
 const GlobalStyle = createGlobalStyle`
@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
     letter-spacing: .045rem;
     min-height: 100vh;
-    @media (max-width: 767px) {
+  @media (max-width: ${breakpoint.mobile}) {
       font-size: .9rem;
     }
   }

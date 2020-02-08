@@ -4,7 +4,7 @@ export const BlogImage = graphql`
     fragment BlogImage on MarkdownRemarkFrontmatter {
         image {
             childImageSharp {
-                fluid(maxWidth: 1200, maxHeight: 700, fit: COVER) {
+                fluid(maxWidth: 1200, maxHeight: 800, fit: COVER) {
                     ...GatsbyImageSharpFluid_tracedSVG
                 }
             }
@@ -32,7 +32,7 @@ export const BlogPostImage = graphql`
     fragment BlogPostImage on MarkdownRemarkFrontmatter {
         image {
             childImageSharp {
-                fluid(maxWidth: 1200) {
+                fluid(maxWidth: 1400) {
                     ...GatsbyImageSharpFluid_tracedSVG
                 }
             }

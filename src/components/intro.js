@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { breakpoint } from '../styles/theme';
 
 const Intro = ({ name, title, summary }) => (
     <Wrapper>
@@ -31,7 +32,7 @@ const Title = styled.h1`
         letter-spacing: 0.2rem;
         text-transform: uppercase;
     }
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoint.mobile}) {
         font-size: 1.35rem;
         max-width: 75%;
         span {

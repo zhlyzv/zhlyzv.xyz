@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import GlobalStyle from '../styles/global';
 import useMetadata from '../hooks/useMetadata';
 import SEO from '../components/seo';
+import { breakpoint } from '../styles/theme';
 
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -17,7 +18,7 @@ const Wrapper = styled.div`
     margin: 0 auto;
     padding: 0 20px;
     /* justify-content: center; */
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoint.mobile}) {
         padding: 0 5px;
     }
 `;

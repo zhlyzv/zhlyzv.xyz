@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { buildSlug } from '../util';
-import { colours, font } from '../styles/theme';
+import { colours, font, spacing, breakpoint } from '../styles/theme';
 
 const postList = ({ node }) => {
     const { slug } = node.fields;
@@ -65,7 +65,7 @@ const Heading = styled.h2`
         bottom: 0;
         left: 0;
     }
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoint.mobile}) {
         font-size: 1.5rem;
         padding: 8px 10px;
 
@@ -112,11 +112,14 @@ const Info = styled.div`
 `;
 
 const Image = styled(Img)`
-    transition: all 400ms ease-in-out;
+    transition: all 300ms ease-in-out;
     cursor: pointer;
     border-radius: 3px;
     display: block;
     width: 100%;
+    &:hover {
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.7);
+    }
 `;
 
 const Link = styled(GatsbyLink)`
@@ -142,10 +145,10 @@ const CategoryLink = styled(GatsbyLink)`
 `;
 
 const Post = styled.article`
-    margin-bottom: 50px;
+    margin-bottom: ${spacing.huge}px;
     align-self: center;
     width: 80%;
-    @media (max-width: 767px) {
+    @media (max-width: ${breakpoint.mobile}) {
         margin-bottom: 20px;
         width: 100%;
     }
