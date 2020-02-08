@@ -6,8 +6,8 @@ import { spacing, breakpoint } from '../styles/theme';
 const HomeSection = ({ sectionName, children, titleAlign }) => (
     <Wrapper>
         <Content>
-            <Heading titleAlign={titleAlign}>{sectionName}</Heading>
             {children}
+            <Heading titleAlign={titleAlign}>{sectionName}</Heading>
         </Content>
     </Wrapper>
 );

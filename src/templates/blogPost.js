@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Layout from '../layouts/homeLayout';
 import { colours, spacing, breakpoint } from '../styles/theme';
 import { buildSlug } from '../util';
+import SEO from '../components/seo';
 
 const BlogPost = ({ data, pageContext }) => {
     const { markdownRemark } = data;
@@ -15,6 +16,7 @@ const BlogPost = ({ data, pageContext }) => {
 
     return (
         <Layout>
+            <SEO title={title} keywoards={categories} />
             <Post>
                 <Header>
                     <Title>{title}</Title>
