@@ -61,7 +61,7 @@ const Info = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         margin-bottom: 20px;
         justify-content: left;
         align-items: flex-start;
@@ -76,6 +76,7 @@ const TitleLink = styled(Link)`
     display: block;
     color: black;
     border: 0;
+    text-decoration: none;
     &:hover {
         background: none;
         color: ${colours.light};
@@ -90,8 +91,7 @@ const ImageLink = styled(Link)`
 `;
 
 const FeaturedTitle = styled.h1`
-    font-size: 2.2rem;
-    margin-bottom: 5px;
+    margin-bottom: 0;
 `;
 
 const Date = styled.p`
@@ -130,7 +130,7 @@ const Wrapper = styled.article`
     flex-direction: row;
     padding-bottom: 50px;
     border-bottom: 1px solid ${colours.borders};
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         margin-bottom: 30px;
         flex-direction: column-reverse;
         padding-bottom: 0;

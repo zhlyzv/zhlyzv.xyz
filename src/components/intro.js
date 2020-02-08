@@ -31,7 +31,7 @@ const Title = styled.h1`
         letter-spacing: 0.2rem;
         text-transform: uppercase;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         font-size: 1.35rem;
         max-width: 75%;
         span {

@@ -3,7 +3,7 @@
   "intro": {
     "name": "Alexander Zhelyazov",
     "title": "Full-Stack Developer",
-    "summary": "Experienced full-stack developer with a history of working in the e-commerce sector. \n Passionate about delivering standards-compliant, maintainable solutions with a focus on user experience.",
+    "summary": "I'm a full-stack developer based in London. I've spent the last 5 years working with some of the biggest brands in the e-commerce space. I'm passionate about creating elegant solutions to interesting problems",
     "heading": "about."
   },
   "work": {
@@ -37,10 +37,10 @@
   },
   "projects": {
     "heading": "projects.",
-    "text": "The {0} and any other projects can be found on {1}",
-    "cta_1": "source code for this website",
+    "text": "The {0} for this website and any other projects can be found on my {1}",
+    "cta_1": "source code",
     "link_1": "https://github.com/zhlyzv/zhlyzv.xyz",
-    "cta_2": "my GitHub profile.",
+    "cta_2": "GitHub profile.",
     "link_2": "https://github.com/zhlyzv"
   },
   "contact": {

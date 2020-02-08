@@ -30,7 +30,7 @@ const Nav = styled.nav`
                 /* text-decoration: underline overline; */
             }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
             position: relative;
             writing-mode: horizontal-tb;
             text-orientation: upright;
@@ -52,7 +52,6 @@ const Nav = styled.nav`
 
 const HeaderNav = () => {
     const { socialMedia } = useMetadata();
-    console.log(socialMedia);
     return (
         <Nav>
             <a href={socialMedia.github}>GitHub</a>

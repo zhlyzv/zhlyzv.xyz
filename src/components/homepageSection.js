@@ -21,11 +21,15 @@ const Heading = styled.h2`
     right: ${props => (props.titleAlign === 'left' ? 'auto' : '0')};
     flex: 1 100%;
     z-index: 1;
-    @media (max-width: 768px) {
-        font-size: 0.92rem;
+    @media (max-width: 1050px) {
+        font-size: 0.9rem;
         top: 15%;
-        left: ${props => (props.titleAlign === 'left' ? '-5%' : 'auto')};
-        right: ${props => (props.titleAlign === 'left' ? 'auto' : '-5%')};
+        left: ${props => (props.titleAlign === 'left' ? '2%' : 'auto')};
+        right: ${props => (props.titleAlign === 'left' ? 'auto' : '2%')};
+    }
+    @media (max-width: 767px) {
+        left: ${props => (props.titleAlign === 'left' ? '-4%' : 'auto')};
+        right: ${props => (props.titleAlign === 'left' ? 'auto' : '-4%')};
     }
 `;
 
@@ -46,10 +50,10 @@ const Wrapper = styled.section`
         max-width: 50%;
         letter-spacing: 0.06rem;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         padding: 10px 0;
         p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             max-width: 70%;
         }
     }

@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import formattedString from 'react-formatted-string';
 
 const Contact = ({ text, email, cta }) => {
-    const contactString = formattedString(text, <a href={`mailto:${email}`}>{cta}</a>);
+    const contactString = formattedString(
+        text,
+        <a key={1} href={`mailto:${email}`}>
+            {cta}
+        </a>
+    );
     return (
         <Wrapper>
             <p>{contactString}</p>

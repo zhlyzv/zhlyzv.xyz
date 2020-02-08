@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import Layout from '../layouts/blogLayout';
 import Pagination from '../components/pagination';
 import Featured from '../components/featured';
-import renderList from '../components/renderList';
+import postList from '../components/postList';
 
 const BlogPostList = ({ data, pageContext }) => {
     const { allMarkdownRemark } = data;
     const { currentPage, numPages } = pageContext;
-    const posts = allMarkdownRemark.edges.map(renderList);
+    const posts = allMarkdownRemark.edges.map(postList);
 
     return (
         <Layout>

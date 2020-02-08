@@ -31,6 +31,9 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
     letter-spacing: .045rem;
     min-height: 100vh;
+    @media (max-width: 767px) {
+      font-size: .9rem;
+    }
   }
 
   main {
@@ -81,21 +84,23 @@ const GlobalStyle = createGlobalStyle`
 
   p {
     margin: 0 0 ${spacing.medium};
-    line-height: 1.8;
+    line-height: 1.6;
   }
 
   a {
-    /* box-shadow:${colours.accent} 0px -2px 0px inset; */
     color: ${colours.accent};
     display: inline-block;
-    border-bottom: 1px solid;
     transition: all .4s ease;
-    text-decoration: none;
+    text-decoration-color: ${colours.light};
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
     &:hover,
     &:active,
     &:focus {
       color: ${colours.light};
       background: ${colours.accent};
+      text-decoration-color: ${colours.accent};
+      border-radius: 2px;
     }
     &:focus {
       outline: 1px solid;

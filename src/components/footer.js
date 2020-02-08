@@ -2,7 +2,9 @@ import React from 'react';
 
 const Footer = () => (
     <footer>
-        <a href='/sitemap.xml'>Sitemap</a>
+        <small>
+            <a href='/sitemap.xml'>sitemap</a>
+        </small>
     </footer>
 );
 

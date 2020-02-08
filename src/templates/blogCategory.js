@@ -1,14 +1,14 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import renderList from '../components/renderList';
+import postList from '../components/postList';
 import Pagination from '../components/pagination';
 import Layout from '../layouts/blogLayout';
 import CategoryList from '../components/categoryList';
 
 const BlogCategory = ({ data, pageContext }) => {
     const { allMarkdownRemark } = data;
-    const posts = allMarkdownRemark.edges.map(renderList);
+    const posts = allMarkdownRemark.edges.map(postList);
     const categories = (
         <CategoryList
             categories={pageContext.allCategories}

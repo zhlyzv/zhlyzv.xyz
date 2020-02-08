@@ -6,8 +6,12 @@ import formattedString from 'react-formatted-string';
 const Projects = ({ text, ctas, links }) => {
     const projectText = formattedString(
         text,
-        <a href={links[0]}>{ctas[0]}</a>,
-        <a href={links[1]}>{ctas[1]}</a>
+        <a key={1} href={links[0]}>
+            {ctas[0]}
+        </a>,
+        <a key={2} href={links[1]}>
+            {ctas[1]}
+        </a>
     );
     return (
         <Wrapper>

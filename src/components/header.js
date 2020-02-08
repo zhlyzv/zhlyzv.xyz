@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
     flex-direction: row;
     place-items: center center;
     justify-content: space-between;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         background: ${colours.background};
         display: flex;
         justify-content: center;

@@ -6,7 +6,7 @@ import Img from 'gatsby-image';
 import { buildSlug } from '../util';
 import { colours, font } from '../styles/theme';
 
-const renderList = ({ node }) => {
+const postList = ({ node }) => {
     const { slug } = node.fields;
     const { title, category: categories, date, image } = node.frontmatter;
     const imageSource = image.childImageSharp.fluid;
@@ -42,7 +42,7 @@ const Heading = styled.h2`
     place-items: center center;
     justify-content: space-between;
     position: relative;
-    padding: 15px 25px;
+    padding: 12px 20px;
     margin-bottom: 20px;
     &:after,
     &:before {
@@ -54,16 +54,27 @@ const Heading = styled.h2`
         height: 50px;
     }
     &:after {
-        border-width: 8px 8px 0 0;
+        border-width: 6px 6px 0 0;
         border-color: ${colours.primary};
         top: 0;
         right: 0;
     }
     &:before {
-        border-width: 0 0 8px 8px;
+        border-width: 0 0 6px 6px;
         border-color: hsla(309.4, 32%, 47.3%, 0.52);
         bottom: 0;
         left: 0;
+    }
+    @media (max-width: 767px) {
+        font-size: 1.5rem;
+        padding: 8px 10px;
+
+        &:after {
+            border-width: 3px 3px 0 0;
+        }
+        &:before {
+            border-width: 0 0 3px 3px;
+        }
     }
 `;
 
@@ -134,14 +145,14 @@ const Post = styled.article`
     margin-bottom: 50px;
     align-self: center;
     width: 80%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         margin-bottom: 20px;
         width: 100%;
     }
 `;
 
-renderList.propTypes = {
+postList.propTypes = {
     node: PropTypes.object.isRequired,
 };
 
-export default renderList;
+export default postList;

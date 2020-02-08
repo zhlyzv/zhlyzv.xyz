@@ -25,7 +25,7 @@ const LogoLink = styled.a`
 
 const LogoImg = styled.img`
     width: 250px;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         width: 100px;
     }
 `;
@@ -44,7 +44,7 @@ const GridItem = styled.div`
     display: flex;
     flex: 1 50%;
     justify-content: center;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         padding: 5px;
         margin-bottom: 25px;
     }

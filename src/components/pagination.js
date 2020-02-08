@@ -37,7 +37,7 @@ const List = styled.ul`
     border-top: 1px solid ${colours.borders};
     width: 60%;
     padding: 0;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         width: 80%;
     }
 `;

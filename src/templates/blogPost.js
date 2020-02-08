@@ -108,7 +108,7 @@ const Post = styled.article`
     max-width: 1360px;
     margin: 0 auto;
     padding: 0 10%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         padding: 0 5%;
     }
 `;
@@ -119,7 +119,7 @@ const Pagination = styled.div`
     justify-content: space-evenly;
     max-width: 60%;
     margin: 0 auto 50px;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         max-width: 80%;
     }
 `;
