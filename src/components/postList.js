@@ -6,9 +6,8 @@ import Img from 'gatsby-image';
 import { buildSlug } from '../util';
 import { colours, font, spacing, breakpoint } from '../styles/theme';
 
-const postList = ({ node }) => {
-    const { slug } = node.fields;
-    const { title, category: categories, date, image } = node.frontmatter;
+const postList = node => {
+    const { title, category: categories, date, image, slug } = node.frontmatter;
     const imageSource = image.childImageSharp.fluid;
 
     return (

@@ -7,9 +7,8 @@ import { colours, spacing, breakpoint } from '../styles/theme';
 
 const BlogFeatured = () => {
     // eslint-disable-next-line
-    const { markdownRemark } = useStaticQuery(query);
-    const { slug } = markdownRemark.fields;
-    const { title, date, category: categories, image } = markdownRemark.frontmatter;
+    const { mdx } = useStaticQuery(query);
+    const { title, date, category: categories, image, slug } = mdx.frontmatter;
     const imageSource = image.childImageSharp.fluid;
 
     return (
@@ -140,15 +139,12 @@ const Wrapper = styled.article`
 
 const query = graphql`
     query BlogFeatured {
-        markdownRemark(frontmatter: { featured: { eq: true } }) {
-            html
-            fields {
-                slug
-            }
+        mdx(frontmatter: { featured: { eq: true } }) {
             frontmatter {
                 title
                 date(formatString: "MMMM YYYY")
                 category
+                slug
                 ...BlogImage
             }
         }

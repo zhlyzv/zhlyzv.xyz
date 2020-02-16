@@ -7,8 +7,8 @@ import Layout from '../layouts/blogLayout';
 import CategoryList from '../components/categoryList';
 
 const BlogCategory = ({ data, pageContext }) => {
-    const { allMarkdownRemark } = data;
-    const posts = allMarkdownRemark.edges.map(postList);
+    const { allMdx } = data;
+    const posts = allMdx.nodes.map(postList);
     const categories = (
         <CategoryList
             categories={pageContext.allCategories}
@@ -43,13 +43,13 @@ export default BlogCategory;
 
 export const query = graphql`
     query blogPostsListByCategory($category: String, $skip: Int!, $limit: Int!) {
-        allMarkdownRemark(
+        allMdx(
             sort: { fields: [frontmatter___date], order: DESC }
             filter: { frontmatter: { category: { in: [$category] } } }
             limit: $limit
             skip: $skip
         ) {
-            edges {
+            nodes {
                 ...BlogListingPost
             }
         }

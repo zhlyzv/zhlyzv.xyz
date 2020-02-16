@@ -8,9 +8,9 @@ import Featured from '../components/featured';
 import postList from '../components/postList';
 
 const BlogPostList = ({ data, pageContext }) => {
-    const { allMarkdownRemark } = data;
+    const { allMdx } = data;
     const { currentPage, numPages } = pageContext;
-    const posts = allMarkdownRemark.edges.map(postList);
+    const posts = allMdx.nodes.map(postList);
 
     return (
         <Layout>
@@ -23,7 +23,7 @@ const BlogPostList = ({ data, pageContext }) => {
 
 BlogPostList.propTypes = {
     data: PropTypes.shape({
-        allMarkdownRemark: PropTypes.object.isRequired,
+        allMdx: PropTypes.object.isRequired,
     }),
     pageContext: PropTypes.shape({
         currentPage: PropTypes.number.isRequired,
@@ -35,13 +35,13 @@ export default BlogPostList;
 
 export const query = graphql`
     query blogPostsList($skip: Int!, $limit: Int!) {
-        allMarkdownRemark(
+        allMdx(
             sort: { fields: [frontmatter___date], order: DESC }
             filter: { frontmatter: { featured: { eq: false } } }
             limit: $limit
             skip: $skip
         ) {
-            edges {
+            nodes {
                 ...BlogListingPost
             }
         }

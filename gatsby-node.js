@@ -17,7 +17,9 @@ const errorWrapper = promise =>
     });
 
 const createBlogListingPage = (postList, createPage, template) => {
-    const posts = postList.filter(({ node }) => !node.frontmatter.featured);
+    console.log('poopoo ');
+    console.log(postList);
+    const posts = postList.filter(node => !node.frontmatter.featured);
     const numPages = Math.ceil(posts.length / postsPerPage);
     // Create a listing page based on the number of posts we want to show per page
     Array.from({ length: numPages }).forEach((_, i) => {
@@ -40,11 +42,13 @@ const createBlogPostPages = (postList, createPage, template) => {
         // find what the next and previous posts are
         const prev = arr[i - 1];
         const next = arr[i + 1];
-        const pagePath = post.node.fields.slug;
-        post.node.frontmatter.category.forEach(cat => categories.push(cat));
+        console.log('NEXT POST FOFOFO');
+        console.log(next);
+        const pagePath = post.frontmatter.slug;
+        post.frontmatter.category.forEach(cat => categories.push(cat));
 
         createPage({
-            path: pagePath,
+            path: buildSlug(pagePath),
             component: template,
             context: {
                 slug: pagePath,
@@ -93,20 +97,15 @@ exports.createPages = async ({ graphql, actions }) => {
     const query = await errorWrapper(
         graphql(`
             {
-                posts: allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-                    edges {
-                        node {
-                            fields {
-                                slug
-                            }
-                            frontmatter {
-                                title
-                                date
-                                category
-                                tags
-                                featured
-                            }
-                            html
+                posts: allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+                    nodes {
+                        frontmatter {
+                            title
+                            date
+                            category
+                            tags
+                            featured
+                            slug
                         }
                     }
                 }
@@ -119,7 +118,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const blogListing = path.resolve('./src/templates/blogListing.js');
     const blogCategory = path.resolve('./src/templates/blogCategory.js');
     // Page creation
-    const posts = query.data.posts.edges;
+    const posts = query.data.posts.nodes;
 
     createBlogListingPage(posts, createPage, blogListing);
     createBlogPostPages(posts, createPage, blogPost);
@@ -129,7 +128,7 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions;
 
-    if (node.internal.type === 'MarkdownRemark') {
+    if (node.internal.type === 'Mdx') {
         const value = createFilePath({ node, getNode });
         const year = new Date(node.frontmatter.date).toLocaleDateString('en-EN', {
             year: 'numeric',

@@ -9,9 +9,11 @@ import { buildSlug } from '../util';
 import SEO from '../components/seo';
 
 const BlogPost = ({ data, pageContext }) => {
-    const { markdownRemark } = data;
-    const { title, date, image, category: categories } = markdownRemark.frontmatter;
+    const { mdx } = data;
+    const { title, date, image, category: categories } = mdx.frontmatter;
     const { prev, next } = pageContext;
+    console.log('PREVIOUS POST');
+    console.log(prev);
     const imageSource = image.childImageSharp.fluid;
 
     return (
@@ -36,17 +38,17 @@ const BlogPost = ({ data, pageContext }) => {
                     <Img fluid={imageSource} alt={title} />
                 </ImageLink>
                 {/* TODO: Should we instead use MDX to build blog posts etc? */}
-                <Content dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+                {/* <Content dangerouslySetInnerHTML={{ __html: markdownRemark.html }} /> */}
 
                 <Pagination>
                     {prev && (
-                        <Link to={prev.node.fields.slug} title={prev.node.frontmatter.title}>
+                        <Link to={prev.frontmatter.slug} title={prev.frontmatter.title}>
                             {'<'} Previous
                         </Link>
                     )}
 
                     {next && (
-                        <Link to={next.node.fields.slug} title={next.node.frontmatter.title}>
+                        <Link to={next.frontmatter.slug} title={next.frontmatter.title}>
                             Next {'>'}
                         </Link>
                     )}
@@ -136,8 +138,7 @@ export default BlogPost;
 
 export const query = graphql`
     query BlogPostBySlug($slug: String!) {
-        markdownRemark(fields: { slug: { eq: $slug } }) {
-            html
+        mdx(frontmatter: { slug: { eq: $slug } }) {
             frontmatter {
                 title
                 date(formatString: "MMMM YYYY")

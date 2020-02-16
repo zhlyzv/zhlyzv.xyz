@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 
 export const BlogImage = graphql`
-    fragment BlogImage on MarkdownRemarkFrontmatter {
+    fragment BlogImage on MdxFrontmatter {
         image {
             childImageSharp {
                 fluid(maxWidth: 1200, maxHeight: 800, fit: COVER) {
@@ -13,23 +13,18 @@ export const BlogImage = graphql`
 `;
 
 export const BlogListingPost = graphql`
-    fragment BlogListingPost on MarkdownRemarkEdge {
-        node {
-            fields {
-                slug
-            }
-            frontmatter {
-                title
-                date(formatString: "MMMM YYYY")
-                category
-                ...BlogImage
-            }
+    fragment BlogListingPost on Mdx {
+        frontmatter {
+            title
+            date(formatString: "MMMM YYYY")
+            category
+            ...BlogImage
         }
     }
 `;
 
 export const BlogPostImage = graphql`
-    fragment BlogPostImage on MarkdownRemarkFrontmatter {
+    fragment BlogPostImage on MdxFrontmatter {
         image {
             childImageSharp {
                 fluid(maxWidth: 1400) {

@@ -3,6 +3,7 @@ title: Tech writing placeholder
 date: 2020-02-08
 featured: false
 image: ../travel/images/malaysia/kinabatangan01.jpg
+slug: asdasdsad
 category:
   - Writing
 ---
