@@ -14,6 +14,9 @@ export const BlogImage = graphql`
 
 export const BlogListingPost = graphql`
     fragment BlogListingPost on Mdx {
+        fields {
+            slug
+        }
         frontmatter {
             title
             date(formatString: "MMMM YYYY")

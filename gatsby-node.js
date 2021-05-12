@@ -47,14 +47,18 @@ const createBlogPostPages = (postList, createPage, template) => {
         const pagePath = post.frontmatter.slug;
         post.frontmatter.category.forEach(cat => categories.push(cat));
 
-        createPage({
-            path: buildSlug(pagePath),
-            component: template,
-            context: {
-                slug: pagePath,
-                prev,
-                next,
-            },
+        const { category } = post.frontmatter;
+
+        category.forEach(cat => {
+            createPage({
+                path: buildSlug('blog', cat, pagePath),
+                component: template,
+                context: {
+                    slug: buildSlug('blog', cat, pagePath),
+                    prev,
+                    next,
+                },
+            });
         });
     });
 };
@@ -128,24 +132,27 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions;
 
+    console.log('running onCreateNode hook for type, ', node.internal.type);
     if (node.internal.type === 'Mdx') {
-        const value = createFilePath({ node, getNode });
-        const year = new Date(node.frontmatter.date).toLocaleDateString('en-EN', {
-            year: 'numeric',
-        });
+        console.log('updating slugss for node');
+        console.log(node.frontmatter.slug);
+        // const year = new Date(node.frontmatter.date).toLocaleDateString('en-EN', {
+        //     year: 'numeric',
+        // });
         const { category } = node.frontmatter;
         /**
          * Update the slug for each Post
          *
          * In cases where a post has multiple categories, multiple slugs are created.
          * Eg. a Post is categorised as both 'travel' and 'japan' then we get two
-         * slugs /blog/travel/POST_DATE/POST_NAME and /blog/japan/POST_DATE/POST_NAME
+         * slugs /blog/travel/POST_NAME and /blog/japan/POST_NAME
          */
         category.forEach(cat => {
-            const slug = buildSlug('blog', cat, year, value.replace('/blog/', ''));
+            const slug = buildSlug('blog', cat, node.frontmatter.slug);
+            console.log('new slug ', slug);
             createNodeField({
-                name: 'slug',
                 node,
+                name: 'slug',
                 value: slug,
             });
         });

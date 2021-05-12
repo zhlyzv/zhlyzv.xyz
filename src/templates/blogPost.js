@@ -14,6 +14,8 @@ const BlogPost = ({ data, pageContext }) => {
     const { prev, next } = pageContext;
     console.log('PREVIOUS POST');
     console.log(prev);
+    console.log('pageContext');
+    console.log(pageContext);
     const imageSource = image.childImageSharp.fluid;
 
     return (

@@ -8,7 +8,8 @@ import { colours, spacing, breakpoint } from '../styles/theme';
 const BlogFeatured = () => {
     // eslint-disable-next-line
     const { mdx } = useStaticQuery(query);
-    const { title, date, category: categories, image, slug } = mdx.frontmatter;
+    const { slug } = mdx.fields;
+    const { title, date, category: categories, image } = mdx.frontmatter;
     const imageSource = image.childImageSharp.fluid;
 
     return (
@@ -140,6 +141,9 @@ const Wrapper = styled.article`
 const query = graphql`
     query BlogFeatured {
         mdx(frontmatter: { featured: { eq: true } }) {
+            fields {
+                slug
+            }
             frontmatter {
                 title
                 date(formatString: "MMMM YYYY")

@@ -7,7 +7,10 @@ import { buildSlug } from '../util';
 import { colours, font, spacing, breakpoint } from '../styles/theme';
 
 const postList = node => {
-    const { title, category: categories, date, image, slug } = node.frontmatter;
+    const { slug } = node.fields;
+    const { title, category: categories, date, image } = node.frontmatter;
+    console.log('💩 check it check it out');
+    console.log(node);
     const imageSource = image.childImageSharp.fluid;
 
     return (
